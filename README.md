@@ -108,22 +108,7 @@ Mỗi ngày có hàng chục sự kiện mới:
 
 ## Đối tượng người dùng
 
-### 1. Content Creator
-- Cần nguồn lore vô tận cho kênh giải trí
-- Muốn "nuôi" một vũ trụ riêng để khai thác nội dung dài hạn
-- Mỗi ngày pick vài highlight events để quay video / viết blog
-
-### 2. Writer & Game Designer
-- Tìm cảm hứng cho worldbuilding, procedural storytelling
-- Muốn một công cụ sinh lore tự động thay vì brainstorm từng chi tiết
-- Dùng output của agent làm "first draft" cho IP riêng
-
-### 3. Developer & Researcher
-- Khám phá multi-agent AI systems, emergent behavior
-- Thử nghiệm các agent mới, event mechanics, world rules
-- Nghiên cứu narrative generation, procedural mythology
-
-### 4. Hobbyist & Worldbuilding Enthusiast
+Hobbyist & Worldbuilding Enthusiast
 - Yêu thích civilization sim, procedural lore, fantasy world
 - Muốn "nuôi" một thế giới ảo như nuôi pet, xem nó lớn lên thế nào
 - Chia sẻ world với bạn bè, so sánh vũ trụ nào điên rồ hơn
