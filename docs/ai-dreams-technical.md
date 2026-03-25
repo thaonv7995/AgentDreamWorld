@@ -54,8 +54,9 @@ Vai trò:
 ### 2.3 Database & storage
 
 - **SQLite embedded (V1 default)** – world model + event log.
-  - File mặc định: `data/ai-dreams.db`.
-  - Bảng chính: `worlds`, `regions`, `locations`, `civilizations`, `settlements`, `creatures`, `events`, `religions`, `cultures`, `resources`, `eras`, ...
+  - File path theo pattern database-per-world: `data/world-{name}.db` (ví dụ `data/world-main.db`).
+  - Bảng lõi V1: `worlds`, `regions`, `locations`, `civilizations`, `settlements`, `events`, `eras`.
+  - `creatures`, `religions`, `cultures`, `resources` đi qua soft references trong `events.affected_entities` ở V1, và lên table riêng ở V2+.
   - Event-sourcing cho world changes (append-only `events`).
 - **Postgres (V2+/optional)** – cùng schema, dùng khi cần scale lớn hơn hoặc multi-user.
 - **Redis (V2+/optional)** – cache + queue nhẹ:
@@ -192,6 +193,7 @@ Infra:
 
 Backend:
 - Thêm agents: Culture, Myth, Ecology, Economy, Chaos.
+- Tách soft-referenced creatures/religions/cultures/resources thành first-class tables khi cần query riêng.
 - Áp dụng **simulation boundaries**: caps world size, events/tick, macro depth.
 - Bắt đầu era summaries (nén world state theo từng era).
 
@@ -204,7 +206,7 @@ Frontend:
 
 Backend:
 - Projections cho map, graph, highlights.
-- Export endpoints cho wiki / annals / myths.
+- Export endpoints cho wiki / annals; mythology/myths chi them khi Myth layer da co projection rieng.
 
 Frontend:
 - Knowledge Graph view.

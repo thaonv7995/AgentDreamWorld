@@ -82,7 +82,7 @@ cargo run --bin ai-dreams-server
 Backend mặc định:
 
 - Nghe ở `http://localhost:3000`.
-- Dùng **SQLite embedded** (`data/ai-dreams.db`) cho world state.
+- Dùng **SQLite embedded** theo kiểu database-per-world (`data/world-main.db` hoặc path cấu hình qua `AI_DREAMS_WORLD_DB`) cho world state.
 
 ### 4.3. Chạy frontend
 

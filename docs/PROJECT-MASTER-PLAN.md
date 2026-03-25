@@ -69,7 +69,7 @@ Current active target:
 | Phase 3 – MVP RC | Sprint 5–6 | Release candidate | Timeline, export, single-binary, QA | Gate D | Not Started |
 | Phase 4 – Expanded Simulation | Sprint 7–8 | V2 simulation richness | Culture/Myth/Ecology/Economy/Chaos | Gate E | Not Started |
 | Phase 5 – Visualization | Sprint 9–10 | Deeper exploration | Map, Civilization Viewer, Graph | Gate F | Not Started |
-| Phase 6 – Platform Expansion | Sprint 11–12 | Scale path | optional infra, multi-world foundation | Gate G | Not Started |
+| Phase 6 – Platform Expansion | Sprint 11–12 | Scale path | optional infra, advanced observability, multi-world foundation | Gate G | Not Started |
 
 ---
 
@@ -83,7 +83,7 @@ Current active target:
 | Gate D – MVP Release Candidate | Sprint 6 | Đạt DoD của V1 trong `MVP-SPEC.md` |
 | Gate E – Expanded Simulation Ready | Sprint 8 | Thêm agents V2 mà vẫn giữ coherence |
 | Gate F – Visualization Ready | Sprint 10 | Map + Civilization Viewer + Mythology/Graph usable |
-| Gate G – Platform Expansion Ready | Sprint 12 | Optional advanced infra + multi-world foundation có đường chạy |
+| Gate G – Platform Expansion Ready | Sprint 12 | Optional advanced infra + advanced observability + multi-world foundation có đường chạy |
 
 ---
 
@@ -104,7 +104,7 @@ Sử dụng bảng này như tracker cập nhật sau mỗi sprint.
 | Sprint 8 | Expanded Simulation | Ecology + Economy + Chaos | scarcity/conflict rules | simulation depth demo | Not Started | |
 | Sprint 9 | Visualization | Map + civ detail | map beta, civilization viewer | visual exploration | Not Started | |
 | Sprint 10 | Visualization | Mythology + graph | browser, graph beta | lore graph demo | Not Started | |
-| Sprint 11 | Platform Expansion | Advanced profile | Postgres/Redis optional, observability | ops/perf demo | Not Started | |
+| Sprint 11 | Platform Expansion | Advanced profile | Postgres/Redis optional, advanced observability | ops/perf demo | Not Started | |
 | Sprint 12 | Platform Expansion | Multi-world foundation | fork/snapshot/gallery metadata | multi-world demo | Not Started | |
 
 ---

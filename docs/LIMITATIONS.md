@@ -531,7 +531,7 @@ if tick_cost > COST_ALERT_PER_TICK {
 
 [MVP-SPEC.md](MVP-SPEC.md) §4.1 chỉ liệt kê endpoint names, không định nghĩa response shape. Khi frontend (Sprint 4) và backend (Sprint 1–3) phát triển song song, projection shape sẽ drift.
 
-Ví dụ: frontend expect `GET /worlds/current/events` trả `{ events: [...], total: N }` nhưng backend trả `[...]` flat → runtime error ở Sprint 4.
+Ví dụ: frontend expect `GET /worlds/current/events` trả envelope chuẩn kiểu `{ success, code, message, data: [...], meta: { total: N } }` nhưng backend trả `[...]` flat → runtime error ở Sprint 4.
 
 **Mitigation: Lightweight Contract trước Sprint 4**
 
@@ -542,21 +542,37 @@ Viết TypeScript types cho API responses (đây là contract, không phải Ope
 ```typescript
 // contracts/api-types.ts
 
-interface WorldSummary {
-  id: string;
-  name: string;
-  current_year: number;
-  current_era: { id: string; name: string } | null;
-  regions_count: number;
-  civilizations_count: number;
-  settlements_count: number;
-  total_canonical_events: number;
+interface ApiResponse<T> {
+  success: boolean;
+  code: string;     // 4-digit business code, e.g. "0000"
+  message: string;
+  data: T;
+  meta?: {
+    page?: number;
+    page_size?: number;
+    total?: number;
+    filters?: Record<string, unknown>;
+  };
+  errors?: Array<{ field: string; reason: string }>;
 }
 
-interface WorldEvent {
-  id: string;
+interface WorldSummaryDto {
+  world_id: string;
+  name: string;
+  current_year: number;
+  current_era: { era_id: string; name: string } | null;
+  stats: {
+    regions: number;
+    civilizations: number;
+    settlements: number;
+    canonical_events: number;
+  };
+  highlights: string[];
+}
+
+interface WorldEventDto {
+  event_id: string;
   year: number;
-  era_id: string | null;
   event_type: string;
   agent: string;
   description: string;
@@ -564,15 +580,11 @@ interface WorldEvent {
   is_canonical: boolean;
 }
 
-interface EventsResponse {
-  events: WorldEvent[];
-  total: number;
-  from_year: number | null;
-  to_year: number | null;
-}
+type WorldSummaryResponse = ApiResponse<WorldSummaryDto>;
+type EventsResponse = ApiResponse<WorldEventDto[]>;
 
-interface TimelineEra {
-  id: string;
+interface TimelineEraDto {
+  era_id: string;
   name: string;
   start_year: number;
   end_year: number | null;
@@ -592,10 +604,13 @@ fn events_response_matches_contract() {
     let json: serde_json::Value = serde_json::to_value(&response).unwrap();
 
     // Verify shape
-    assert!(json["events"].is_array());
-    assert!(json["total"].is_number());
-    for event in json["events"].as_array().unwrap() {
-        assert!(event["id"].is_string());
+    assert!(json["success"].is_boolean());
+    assert!(json["code"].is_string());
+    assert!(json["message"].is_string());
+    assert!(json["data"].is_array());
+    assert!(json["meta"]["total"].is_number());
+    for event in json["data"].as_array().unwrap() {
+        assert!(event["event_id"].is_string());
         assert!(event["year"].is_number());
         assert!(event["event_type"].is_string());
         assert!(event["description"].is_string());

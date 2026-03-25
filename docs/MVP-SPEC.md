@@ -41,10 +41,10 @@ Mục tiêu của tài liệu này là **khóa scope cho V1 (MVP)** của AI Dre
 V1 cover tốt:
 
 - **Tầng 1 – World Genesis**
-  - Sinh regions, climate rough, primitive creatures, first tribes, 1–2 core anomalies.
+  - Sinh regions, climate rough, primitive creatures (qua soft references), first tribes, 1–2 core anomalies.
 
 - **Tầng 2 – Civilization Growth**
-  - Sinh settlements, civs, religions, customs, trade thô, conflict cơ bản.
+  - Sinh settlements, civs, trade thô, conflict cơ bản.
 
 - Tầng 3 (Era Dynamics) mới ở mức **rất sơ khai** – chỉ một số war/collapse lớn.
 

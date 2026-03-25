@@ -9,10 +9,10 @@ Tài liệu này liệt kê các tính năng chính của hệ thống AI Dreams
 ### 1.1. World bootstrap & evolution
 
 - **Auto Genesis World (V1)**  
-  Lần chạy đầu, hệ thống tự tạo một world mặc định: 3–4 regions, vài tribes/civilizations, một số anomalies, primitive creatures, first myths. Không cần user chọn gì.
+  Lần chạy đầu, hệ thống tự tạo một world mặc định: 3–4 regions, vài tribes/civilizations, một số anomalies, primitive creatures, first settlements/discoveries. Không cần user chọn gì.
 
 - **Genesis Mode (V1)**  
-  Chạy 50–200 ticks khởi tạo: sinh geography, climate, primitive creatures, first tribes, first myths.
+  Chạy 50–200 ticks khởi tạo: sinh geography, climate, primitive creatures, first tribes, first settlements và first notable discoveries.
 
 - **Evolution Mode (V1)**  
   Simulation tick theo nhịp cố định (1 tick = 5 năm), mỗi tick chỉ sinh 1 major event + tối đa 2 minor events để giữ coherence.
@@ -34,7 +34,7 @@ Tài liệu này liệt kê các tính năng chính của hệ thống AI Dreams
 ### 1.3. World model & event sourcing
 
 - **Structured World Model (V1)**  
-  World được biểu diễn bằng các entity có cấu trúc: World, Region, Location, Civilization, Settlement, Creature, Religion, Culture, Resource, Event, Era.
+  World được biểu diễn bằng các entity lõi có cấu trúc: World, Region, Location, Civilization, Settlement, Event, Era. Các entity như Creature/Religion/Culture/Resource ở V1 chỉ đi qua soft references trong `events.affected_entities`, và lên table riêng ở V2+.
 
 - **Event-sourced History (V1)**  
   Mọi thay đổi đi qua event append-only, có thể replay/debug.
@@ -45,7 +45,7 @@ Tài liệu này liệt kê các tính năng chính của hệ thống AI Dreams
 ### 1.4. Simulation boundaries
 
 - **World Scope Limits (V1)**  
-  1 world, 3–4 regions, 3–6 active civilizations, tối đa 20 settlements, 30–100 key creatures/artifacts/myths, khoảng 100–200 major canonical events.
+  1 world, 3–4 regions, 3–6 active civilizations, tối đa 20 settlements, 30–100 notable soft-referenced entities/artifacts/anomalies, khoảng 100–200 major canonical events.
 
 - **Tick & Event Caps (V1)**  
   1 tick = 5 năm; 2–3 agents active/tick; 1 major event + tối đa 2 minor events mỗi tick.
@@ -66,7 +66,7 @@ Tài liệu này liệt kê các tính năng chính của hệ thống AI Dreams
   Trục thời gian để xem lịch sử: zoom theo era, nhảy đến time range cụ thể.
 
 - **World Overview (V1)**  
-  Danh sách regions + civilizations + basic stats (population rough, tech stage, religion overview).
+  Danh sách regions + civilizations + basic stats (population rough, development stage, settlement count, canonical event count).
 
 ### 2.2. Advanced views
 
@@ -103,7 +103,7 @@ Tài liệu này liệt kê các tính năng chính của hệ thống AI Dreams
 ## 4. Content & Export
 
 - **Wiki Snapshot Export (V1)**  
-  Nút export auto-wiki: sinh một tập file markdown mô tả civilizations, settlements, religions, major events, myths cho world hiện tại.
+  Nút export auto-wiki: sinh một tập file markdown mô tả world summary, civilizations, settlements và major events cho world hiện tại.
 
 - **Annals Export (V1)**  
   Nút xuất “Annals of World X” – biên niên sử các notable events theo trình tự thời gian.
@@ -191,8 +191,8 @@ Mục tiêu: **V1 không bắt buộc Postgres/Redis**, để user không cần 
   - Giảm số lượng service phải chạy.
 
 - **Storage**  
-  - Local filesystem: `data/worlds/`, `data/exports/`, `data/assets/`.
-  - Export wiki/annals/myths ra markdown/PDF trong thư mục `exports/`.
+  - Local filesystem: `data/`, `exports/`, `assets/`.
+  - Export wiki/annals ra markdown/PDF trong thư mục `exports/`.
 
 User bình thường:
 - Không cần cài Postgres/Redis.
@@ -246,6 +246,6 @@ Và sẽ có ngay:
 - Dream Feed + Timeline để xem lịch sử.
 - World Overview (regions + civilizations).
 - God Mode cơ bản với vài trigger có sẵn.
-- Nút export wiki/annals/myths để làm content.
+- Nút export wiki/annals để làm content.
 
 Mọi thứ nâng cao (multi-world, map đẹp, knowledge graph, community) đều để V2/V3/Later – không chặn hành trình build V1.

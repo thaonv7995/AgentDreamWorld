@@ -57,7 +57,7 @@ Thư mục này tách `IMPLEMENTATION-PLAN.md` thành các file nhỏ hơn theo 
 | Sprint 08 | Ecology, Economy, Chaos, macro rules | `SPRINT-08.md` |
 | Sprint 09 | Region map và Civilization Viewer | `SPRINT-09.md` |
 | Sprint 10 | Mythology Browser và Knowledge Graph | `SPRINT-10.md` |
-| Sprint 11 | Optional advanced infra và observability | `SPRINT-11.md` |
+| Sprint 11 | Optional advanced infra và advanced observability | `SPRINT-11.md` |
 | Sprint 12 | Multi-world foundation và project ops | `SPRINT-12.md` |
 
 ---

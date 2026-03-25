@@ -29,7 +29,7 @@ Người dùng **không phải là người xây thế giới**, mà là **khán
 1. Người dùng chạy AI Dreams World (single binary hoặc dev mode).
 2. Hệ thống khởi tạo một **world mới từ hư không**:
    - Init agents.
-   - Chạy **Genesis Mode** để sinh geography, first tribes, first myths.
+   - Chạy **Genesis Mode** để sinh geography, first tribes, first settlements, 1–2 core anomalies.
 3. Sau Genesis, **Evolution Mode** chạy liên tục theo tick (5 năm/tick):
    - Agents sinh event proposals.
    - Guardian validate → world state được cập nhật.
@@ -41,7 +41,8 @@ Người dùng **không phải là người xây thế giới**, mà là **khán
    - Thỉnh thoảng dùng **God Mode** để trigger events và quan sát phản ứng.
 5. Khi world đã tích đủ lịch sử, người dùng có thể:
    - Export wiki snapshot.
-   - Export annals & myths để làm content.
+   - Export annals để làm content.
+   - (Phase 2+) Export mythology/myths content khi các agent V2 được bật.
 
 ---
 

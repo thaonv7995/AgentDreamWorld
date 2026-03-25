@@ -31,7 +31,7 @@ V1 **không** nên là "vũ trụ vô hạn". Nên khóa phạm vi thế giới 
 - 3–4 regions
 - 3–6 civilizations active
 - tối đa 20 settlements
-- 30–100 key creatures / artifacts / myths
+- 30–100 notable soft-referenced entities / artifacts / anomalies
 - khoảng 100–200 major canonical events
 
 Nếu không giới hạn, user sẽ không biết mình đang nhìn cái gì, UI sẽ trở thành mớ hỗn độn khó đọc.
@@ -45,7 +45,7 @@ Không để simulation chạy "real-time vô hạn" ngay từ đầu. Thay vào
 **Genesis mode**
 - Dùng để tạo thế giới ban đầu.
 - Ví dụ: 50–200 simulation ticks.
-- Sinh: geography, climate, primitive creatures, first tribes, first myths.
+- Sinh: geography, climate, primitive creatures, first tribes, first settlements, first notable discoveries.
 
 **Evolution mode**
 - Thế giới chạy đều theo nhịp.
@@ -152,10 +152,10 @@ Sinh ra những thứ nền tảng:
 
 Xây dựng thế giới loài người / civilization:
 - settlements (village/town/city)
-- religions, cults
-- customs, festivals, rituals
 - trade, alliances
 - conflict, wars
+- religions, cults *(V2+ hoặc soft reference trong events)*
+- customs, festivals, rituals *(V2+ hoặc narrative flavor qua events)*
 
 ### Tầng 3 — Era Dynamics
 
@@ -164,7 +164,7 @@ Thay đổi lớn theo thời đại:
 - great wars, collapses
 - golden ages, renaissances
 - major plagues, famines, climate shifts
-- canonization của myths (từ truyền thuyết sang giáo lý chính thức)
+- canonization của myths *(V2+)* (từ truyền thuyết sang giáo lý chính thức)
 
 ### Tầng 4 — Mythic Transformation
 
