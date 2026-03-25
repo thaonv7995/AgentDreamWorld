@@ -137,10 +137,13 @@ Không cần full REST spec, chỉ cần các nhóm endpoint:
 ### 5.1. Views bắt buộc
 
 1. **Dream Feed**  
-   - List event theo thời gian (Year, title, short description, type, tags).
+   - List event cards theo thời gian.
+   - Mỗi card tối thiểu có: `Year`, `title`, `short narrative summary`, `type`, `tags`.
+   - Summary phải đọc như một mẩu biên niên sử ngắn, không phải câu log máy móc.
 
 2. **Timeline View**  
    - Trục thời gian, hiển thị markers cho major events, cho zoom theo range.
+   - Timeline được phép factual và ngắn hơn Dream Feed; mục tiêu là định vị lịch sử, không thay thế narrative cards.
 
 3. **World Overview**  
    - Danh sách regions, civilizations, số settlements, vài chỉ số rough.

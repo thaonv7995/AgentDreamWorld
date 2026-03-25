@@ -60,10 +60,10 @@ Tài liệu này liệt kê các tính năng chính của hệ thống AI Dreams
 ### 2.1. Core views
 
 - **Dream Feed (V1)**  
-  Dòng sự kiện realtime theo năm; filter theo loại event, agent, region, civilization.
+  Dòng event cards theo năm với `title`, summary ngắn, tags và các entity liên quan; mục tiêu là đọc như đang theo dõi một biên niên sử sống, không phải log thô. Có filter theo loại event, agent, region, civilization.
 
 - **Timeline Explorer (V1)**  
-  Trục thời gian để xem lịch sử: zoom theo era, nhảy đến time range cụ thể.
+  Trục thời gian factual để xem lịch sử: zoom theo era, nhảy đến time range cụ thể, dùng markers ngắn cho notable events thay vì lặp lại toàn bộ richness của Dream Feed.
 
 - **World Overview (V1)**  
   Danh sách regions + civilizations + basic stats (population rough, development stage, settlement count, canonical event count).

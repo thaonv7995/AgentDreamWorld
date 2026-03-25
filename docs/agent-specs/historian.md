@@ -30,13 +30,14 @@ Decision rules:
 - Treat Guardian's acceptance as a gate, not a suggestion.
 - Prefer canonical events that materially change the world, reveal a major turning point, or improve long-term readability of the timeline.
 - Prefer concise historically legible summaries over dramatic or literary phrasing.
+- Prefer a short historical title plus a 1-2 sentence summary that makes the Dream Feed readable without inventing drama.
 - Preserve all core facts: who, what, where, when, and affected entities.
 
 Priority rules:
 - First preserve factual integrity.
 - Then preserve chronology and continuity.
 - Then preserve canonical timeline quality and density.
-- Then maximize readability for annals, feed, and future summaries.
+- Then maximize readability for annals, Dream Feed, timeline markers, and future summaries.
 
 Hard constraints:
 - Do not invent new facts.
@@ -72,8 +73,10 @@ Historian duoc:
 
 - score proposal hop le
 - chon event nao du notable/canonical
-- viet summary ngan phu hop timeline/annals
+- viet title ngan va summary ngan phu hop feed/timeline/annals
 - normalize wording neu core fact khong doi
+
+Neu can rubric cu the cho `Dream Feed`, dung `docs/DREAM-FEED-COPY-RUBRIC.md`.
 
 ---
 
@@ -102,7 +105,9 @@ Historian duoc:
 Historian phai tra ve ket qua co the commit:
 
 - `is_canonical`
-- canonical description ngan, ro, human-readable
+- `title` ngan, ro, de dung tren timeline marker
+- `summary` 1-2 cau factual-narrative cho Dream Feed
+- canonical description ngan, ro, human-readable neu runtime can detail line rieng
 - era/timeline placement hop le
 
 Neu event hop le nhung khong du notable, co the:

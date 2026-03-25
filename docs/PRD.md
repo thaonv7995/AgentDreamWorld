@@ -35,8 +35,8 @@ Người dùng **không phải là người xây thế giới**, mà là **khán
    - Guardian validate → world state được cập nhật.
    - Historian ghi canonical timeline.
 4. Người dùng:
-   - Xem **Dream Feed** (dòng sự kiện realtime).
-   - Dùng **Timeline** để tua lại lịch sử.
+   - Xem **Dream Feed** như một dòng event cards kể lại thế giới đang đổi thay.
+   - Dùng **Timeline** để tua lại lịch sử qua các mốc factual ngắn gọn.
    - Xem **World Overview / civilizations**.
    - Thỉnh thoảng dùng **God Mode** để trigger events và quan sát phản ứng.
 5. Khi world đã tích đủ lịch sử, người dùng có thể:
@@ -63,8 +63,8 @@ Người dùng **không phải là người xây thế giới**, mà là **khán
 
 ### 5.3. Exploration UI
 
-- Dream Feed – stream sự kiện theo năm.
-- Timeline Explorer – xem lịch sử theo time range / era.
+- Dream Feed – stream event cards theo năm, có `title`, summary ngắn và tags để người dùng cảm thấy đang đọc một thế giới sống.
+- Timeline Explorer – trục lịch sử factual, sparse hơn Dream Feed, dùng cho zoom theo time range / era và định vị major events.
 - World Overview – danh sách regions, civilizations, stats cơ bản.
 - (Phase 2+) Civilization Viewer, Region Map, Mythology Browser, Knowledge Graph.
 

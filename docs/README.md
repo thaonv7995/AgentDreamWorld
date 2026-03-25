@@ -56,6 +56,7 @@ Xem thêm: `ai-dreams-vision.md`.
 - Technical Overview: `ai-dreams-technical.md`.
 - Features: `FEATURES.md`.
 - Visuals & AI Image: `ai-dreams-visuals.md`.
+- Dream Feed copy rubric: `DREAM-FEED-COPY-RUBRIC.md`.
 - MVP spec: `MVP-SPEC.md`.
 - API Contract: `API-CONTRACT.md`.
 - API Codes: `API-CODES.md`.

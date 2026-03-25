@@ -183,7 +183,9 @@ Muc dich:
 
 Muc dich:
 
-- Lay timeline/feed events cho Dream Feed va Timeline View.
+- Lay events cho ca Dream Feed va Timeline View.
+- Dream Feed render `title` + `summary` + `tags`.
+- Timeline View co the chi render `year` + `title` + `is_canonical`.
 
 ### Query params
 
@@ -217,9 +219,12 @@ Muc dich:
     {
       "event_id": "evt_000123",
       "year": 245,
+      "title": "The River Grain Pact",
       "event_type": "trade",
       "agent": "civilization",
+      "summary": "Three river ports opened a shared grain route after a harsh winter, easing famine fears across the lower basin.",
       "description": "The river ports formed a shared grain route.",
+      "tags": ["trade", "grain", "river-basin"],
       "affected_entities": {
         "civilization_ids": ["civ_02", "civ_04"],
         "region_ids": ["reg_03"]
@@ -239,6 +244,13 @@ Muc dich:
   }
 }
 ```
+
+### Field notes
+
+- `title`: ngan, de dung cho marker tren timeline va tieu de Dream Feed card
+- `summary`: 1-2 cau ngan, factual-narrative, de Dream Feed khong bien thanh event log kho khan
+- `description`: optional detail line neu can detail view
+- `tags`: nhom tu khoa de filter/hien thi card meta
 
 ### Failure cases
 

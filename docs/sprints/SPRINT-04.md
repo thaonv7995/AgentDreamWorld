@@ -16,7 +16,7 @@ Người dùng bắt đầu quan sát được thế giới chạy qua UI usable
 
 ## Business Objective
 
-Biến data simulation thành trải nghiệm quan sát thực sự, để sản phẩm bắt đầu có UX thay vì chỉ là backend runtime.
+Biến data simulation thành trải nghiệm quan sát thực sự, để sản phẩm bắt đầu có UX thay vì chỉ là backend runtime. Dream Feed phải đọc như đang theo dõi lịch sử của một thế giới, không phải xem event log thô.
 
 ## Business Value
 
@@ -48,6 +48,7 @@ Biến data simulation thành trải nghiệm quan sát thực sự, để sản
 ## Acceptance Criteria
 
 - [ ] User mở app và thấy event feed thật.
+- [ ] Dream Feed cards có `title + short narrative summary + tags`, không chỉ 1 dòng event khô.
 - [ ] User xem được regions, civilizations, settlements trong World Overview.
 - [ ] User filter được event theo các tiêu chí đã chốt.
 - [ ] UI không còn phụ thuộc hoàn toàn vào mock data.
@@ -78,6 +79,7 @@ Biến data simulation thành trải nghiệm quan sát thực sự, để sản
 
 - [ ] `BA-04.1` Chốt observer-mode UX flow chính của V1 từ open app tới explore world.
 - [ ] `BA-04.2` Chốt filter behavior cho feed, gồm default values và reset behavior.
+- [ ] `BA-04.2b` Chốt rule copy cho Dream Feed: title ngan, summary 1-2 cau, factual-narrative.
 - [ ] `BA-04.3` Chốt acceptance criteria cho World Overview: summary blocks nào bắt buộc, block nào defer.
 - [ ] `BA-04.4` Review text labels và information hierarchy để thống nhất domain language trên UI.
 - [ ] `BA-04.5` Chuẩn bị sample user journey cho demo Gate C.
@@ -87,14 +89,14 @@ Biến data simulation thành trải nghiệm quan sát thực sự, để sản
 
 - [ ] `BE-04.1` Tối ưu event list query cho feed theo response shape thực tế frontend cần.
 - [ ] `BE-04.2` Tối ưu world summary query cho overview để tránh fetch thừa.
-- [ ] `BE-04.3` Thêm response fields cần cho filter, tags và metadata cards.
+- [ ] `BE-04.3` Thêm response fields cần cho filter, `title`, `summary`, tags và metadata cards.
 - [ ] `BE-04.4` Chốt pagination hoặc limit strategy cho feed.
 - [ ] `BE-04.5` Verify semantics của filter ở API khớp acceptance criteria đã chốt.
 - [ ] `BE-04.6` Chuẩn bị stable sample data path để frontend test observer flow.
 
 ## Frontend Checklist
 
-- [ ] `FE-04.1` Implement Dream Feed UI với event cards và meta structure rõ ràng.
+- [ ] `FE-04.1` Implement Dream Feed UI với event cards, `title`, short narrative summary và meta structure rõ ràng.
 - [ ] `FE-04.2` Implement tags/meta cho year, type, agent, civilization.
 - [ ] `FE-04.3` Implement filter theo year, type, agent, civilization.
 - [ ] `FE-04.4` Implement World Overview UI cho regions, civilizations, settlements.
