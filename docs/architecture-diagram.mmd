@@ -1,0 +1,71 @@
+%%{init: {'theme': 'dark', 'themeVariables': {'fontSize': '14px', 'fontFamily': 'arial', 'lineColor': '#6c63ff'}, 'flowchart': {'rankSpacing': 50, 'nodeSpacing': 20, 'curve': 'basis', 'padding': 15}}}%%
+
+graph TD
+    USER(("👤 User / Browser"))
+
+    USER -->|HTTP| FE
+
+    subgraph FE["🌐 FRONTEND — React + Vite SPA — localhost:5173"]
+        direction LR
+        F1["Dream Feed"] ~~~ F2["Timeline"] ~~~ F3["World View"] ~~~ F4["God Mode"] ~~~ F5["Sim Controls"]
+    end
+
+    FE -->|HTTP| BE
+    BE -.->|SSE events| FE
+
+    subgraph BE["🔌 BACKEND — Rust + axum + tokio — localhost:3000"]
+        direction LR
+        B1["REST API"] ~~~ B2["SSE Stream"] ~~~ B3["Sim Controller"]
+    end
+
+    BE --> DE
+
+    subgraph DE["⚙️ DREAM ENGINE — Core Orchestrator"]
+        D1["Simulation Loop<br/>1 tick = 5 in-game years"] --> D2["Agent Scheduler<br/>Select 2-3 agents/tick"]
+        D2 --> D3["Context Builder<br/>World state → LLM prompt"]
+        D3 --> D4["Event Validator<br/>Guardian checks"]
+        D4 --> D5["State Committer<br/>Apply to world"]
+    end
+
+    D3 -->|prompts| LLM
+    LLM -->|proposals| D4
+    D3 --> AG
+    AG --> D4
+
+    subgraph LLM["🧪 LLM PROVIDER"]
+        direction LR
+        L1["Perplexity"] ~~~ L2["OpenAI"] ~~~ L3["Local Model"]
+    end
+
+    subgraph AG["🤖 AGENT LAYER — Stateless"]
+        direction LR
+        subgraph V1["V1 Core"]
+            direction LR
+            A1["🎨 Creator"] ~~~ A2["🏛 Civilization"] ~~~ A3["📖 Storyteller"]
+            A4["📚 Historian"] ~~~ A5["🛡 Guardian"]
+        end
+        subgraph V2["V2+ Extended"]
+            direction LR
+            A6["🎭 Culture"] ~~~ A7["⚡ Myth"] ~~~ A8["🌿 Ecology"]
+            A9["💰 Economy"] ~~~ A10["🌀 Chaos"]
+        end
+    end
+
+    D3 -->|read| DB
+    D5 -->|write| DB
+    BE -->|query| DB
+
+    subgraph DB["💎 WORLD STATE — SQLite V1 / Postgres V2+"]
+        direction LR
+        DB1["📦 Entities<br/>Worlds, Regions, Locations<br/>Civs, Settlements<br/>Creatures, Religions"] ~~~ DB2["📋 Events<br/>Append-only log<br/>Event sourcing"] ~~~ DB3["📅 Eras<br/>Historical periods<br/>& summaries"]
+    end
+
+    style USER fill:#e94560,stroke:#e94560,color:#fff
+    style FE fill:#1b4332,stroke:#2d6a4f,color:#d8f3dc
+    style BE fill:#3c1642,stroke:#7b2d8e,color:#e0d0f0
+    style DE fill:#1a1a2e,stroke:#e94560,color:#f0e0e0
+    style AG fill:#0f2744,stroke:#0ea5e9,color:#e0f0ff
+    style V1 fill:#16213e,stroke:#0ea5e9,color:#e0f0ff
+    style V2 fill:#1a2744,stroke:#6c63ff,color:#c0c0e0
+    style LLM fill:#3b1f2b,stroke:#db7093,color:#f0d0e0
+    style DB fill:#2a1a00,stroke:#fbbf24,color:#fff3cd
