@@ -93,10 +93,10 @@ Sử dụng bảng này như tracker cập nhật sau mỗi sprint.
 
 | Sprint | Phase | Sprint goal | Planned features | Demo output | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| Sprint 0 | Foundation | Repo scaffold | backend shell, frontend shell, dev scripts | stub app chạy được | Not Started | |
-| Sprint 1 | Engine Foundation | World model + schema | SQLite, migrations, repositories | seeded world summary | Not Started | |
-| Sprint 2 | Engine Foundation | Tick pipeline | event log, Guardian, Historian, manual tick | 1 tick end-to-end | Not Started | |
-| Sprint 3 | MVP Vertical Slice | Genesis + agents | Creator, Civilization, Storyteller | generated world | Not Started | |
+| Sprint 0 | Foundation | Repo scaffold | backend shell, frontend shell, dev scripts, **process modes, walking skeleton** | stub app chạy được | Not Started | |
+| Sprint 1 | Engine Foundation | World model + schema | **7 core tables**, migrations, repositories, **db-per-world** | seeded world summary | Not Started | |
+| Sprint 2 | Engine Foundation | Tick pipeline | event log, **declarative Guardian**, **scoring Historian**, manual tick, **llm_call_log, tick_log, CLI report, mock provider, error classification** | 1 tick end-to-end | Not Started | |
+| Sprint 3 | MVP Vertical Slice | Genesis + agents | Creator, Civilization, Storyteller, **API contract types, contract tests, snapshot testing** | generated world | Not Started | |
 | Sprint 4 | MVP Vertical Slice | First observer UI | Dream Feed, World Overview | usable MVP slice | Not Started | |
 | Sprint 5 | MVP RC | Timeline + controls | timeline, pause/resume, God Mode lite | history navigation | Not Started | |
 | Sprint 6 | MVP RC | Export + hardening | wiki, annals, single-binary, QA | MVP RC demo | Not Started | |
@@ -155,11 +155,14 @@ Sử dụng bảng này như tracker cập nhật sau mỗi sprint.
 | --- | --- | --- | --- | --- | --- |
 | Docs-code drift sau khi scaffold | Cao | Cao | README/DEV-SETUP không còn chạy đúng | Review docs mỗi sprint, cập nhật song song với code | Open |
 | Scope creep từ V2/V3 trước MVP | Cao | Cao | Sprint backlog chứa map/graph trước MVP gate | Enforce gate D trước advanced scope | Open |
-| LLM cost/latency quá cao | Cao | Trung bình | Tick time tăng mạnh, budget khó kiểm soát | Mock mode, caching, summaries, model tiering | Open |
-| Simulation incoherence | Cao | Trung bình | Guardian reject rate cao, lore mâu thuẫn | Tăng rules, test fixtures, tune prompts | Open |
-| Schema churn do vocabulary chưa ổn | Trung bình | Trung bình | Migration đổi liên tục | Khóa canon `Region`/`Settlement`, review schema changes qua ADR | Open |
+| LLM cost/latency quá cao | Cao | Trung bình | Tick time tăng mạnh, budget khó kiểm soát | **Structured tick log + cost alert từ Sprint 2**, mock mode, summaries, model tiering. Xem [LIMITATIONS.md](LIMITATIONS.md) §M5 | Open |
+| Simulation incoherence | Cao | Trung bình | Guardian reject rate cao, lore mâu thuẫn | **Declarative rule engine + composable validators từ Sprint 2**, test fixtures, tune prompts. Xem [LIMITATIONS.md](LIMITATIONS.md) §M2 | Open |
+| Non-deterministic pipeline khó debug | Cao | Cao | Bug không rõ thuộc layer nào | **Record/replay (`llm_call_log`) + error classification (`PipelineStage`) + mock provider + snapshot testing từ Sprint 2**. Xem [LIMITATIONS.md](LIMITATIONS.md) §M1 | Open |
+| Schema churn do vocabulary chưa ổn | Trung bình | Trung bình | Migration đổi liên tục | **Slim schema V1 (7 core tables), soft references cho entities chưa cần table, schema version tracking**. Xem [LIMITATIONS.md](LIMITATIONS.md) §M4 | Open |
+| Frontend-backend contract drift | Trung bình | Cao | UI build trên assumptions sai | **API contract types (TypeScript) + contract tests trước Sprint 4**. Xem [LIMITATIONS.md](LIMITATIONS.md) §M6 | Open |
 | Frontend đi nhanh hơn engine | Trung bình | Cao | UI có nhiều mock hơn real data | Ưu tiên vertical slice thật thay vì UI fake | Open |
 | Single maintainer bottleneck | Cao | Trung bình | Sprint slip liên tiếp | Chia workstreams rõ, giảm WIP, ưu tiên MVP | Open |
+| Monolith coupling khó isolate lỗi | Trung bình | Trung bình | Lỗi provider làm nhiễu toàn app | **Process modes + tokio task isolation + channel-based sim control từ Sprint 0**. Xem [LIMITATIONS.md](LIMITATIONS.md) §M3 | Open |
 
 ---
 

@@ -14,7 +14,8 @@ Mục tiêu: đơn giản cho V1 (chạy được chỉ với một binary), nh�
 
 ### 1.2. Database
 
-- **SQLite embedded** – file `data/ai-dreams.db`.
+- **SQLite embedded**, database-per-world: `data/world-{name}.db`.
+- Copy file = clone world, đổi env = switch world.
 - Không yêu cầu Postgres cho V1.
 
 ### 1.3. Cache & Queue
@@ -32,6 +33,24 @@ Mục tiêu: đơn giản cho V1 (chạy được chỉ với một binary), nh�
 
 - Single binary `ai-dreams-server` (serve API + static frontend).
 - Optional: binary + SQLite file chạy trên bất kỳ máy nào có Rust runtime.
+
+### 1.6. Process Modes
+
+```bash
+ai-dreams-server                    # Full mode — API + simulation
+ai-dreams-server --mode api-only    # Chỉ HTTP (frontend dev)
+ai-dreams-server --mode sim-only    # Chỉ simulation (debug tick)
+ai-dreams-server --mode single-tick # Chạy 1 tick rồi exit (testing)
+```
+
+HTTP API và simulation loop isolated trong tokio task groups riêng, giao tiếp qua channel.
+
+### 1.7. Observability (từ Sprint 2)
+
+- Structured tick log (JSONL hoặc SQLite table `tick_log`).
+- `llm_call_log` table cho record/replay.
+- CLI report: `ai-dreams-server report --last N`.
+- Cost alert khi cost/tick vượt threshold.
 
 ---
 

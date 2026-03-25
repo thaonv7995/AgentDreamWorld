@@ -48,6 +48,8 @@ Xem thêm: `ai-dreams-vision.md`.
 - Product: `PRD.md`.
 - Vision: `ai-dreams-vision.md`.
 - Agent Matrix & Runtime Roles: `agents.md`.
+- Agent Instructions: `AGENT-INSTRUCTIONS.md`.
+- Agent Specs: `agent-specs/README.md`.
 - Architecture: `architecture.md`.
 - System Design: `system-design.md`.
 - Simulation: `ai-dreams-simulation.md`.
@@ -55,11 +57,15 @@ Xem thêm: `ai-dreams-vision.md`.
 - Features: `FEATURES.md`.
 - Visuals & AI Image: `ai-dreams-visuals.md`.
 - MVP spec: `MVP-SPEC.md`.
+- API Contract: `API-CONTRACT.md`.
+- API Codes: `API-CODES.md`.
 - Implementation Plan: `IMPLEMENTATION-PLAN.md`.
 - Project Master Plan: `PROJECT-MASTER-PLAN.md`.
 - Sprint Library: `sprints/README.md`.
 - Sprint Master Backlog: `sprints/MASTER-BACKLOG.md`.
 - Agent Runtime & LLM: `AGENT-RUNTIME.md`.
+- Guardian Rulebook: `GUARDIAN-RULEBOOK.md`.
+- Test & Eval Strategy: `TEST-AND-EVAL-STRATEGY.md`.
 - Dev setup: `DEV-SETUP.md`.
 
 ---

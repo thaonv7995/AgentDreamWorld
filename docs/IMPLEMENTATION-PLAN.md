@@ -68,27 +68,33 @@ Nếu team nhỏ hoặc solo, có thể giữ nguyên thứ tự sprint nhưng k
 
 **Goal**
 
-Biến repo từ `docs-only` thành một codebase có thể khởi động được ở mức skeleton.
+Biến repo từ `docs-only` thành một codebase có thể khởi động được ở mức skeleton, bao gồm process modes và walking skeleton.
 
 **Features**
 
 - Tạo Rust workspace + `crates/server`.
 - Tạo `frontend` React + Vite app.
-- Tạo `.env.example` và config loading tối thiểu.
+- Tạo `.env.example` và config loading tối thiểu (bao gồm `AI_DREAMS_WORLD_DB`).
 - Tạo `scripts/dev.sh` cho luồng dev cơ bản.
 - Thiết lập lint/build scripts tối thiểu.
 - Thiết lập project structure theo `ai-dreams-technical.md`.
+- **Process modes** (`--mode full/api-only/sim-only/single-tick`) — xem [LIMITATIONS.md](LIMITATIONS.md) §M3.1.
+- **Tokio task group separation** cho HTTP và simulation (stub) — xem [LIMITATIONS.md](LIMITATIONS.md) §M3.2.
+- **Walking skeleton**: POST /tick (stub) → event in DB → GET /events → JSON → UI render.
 
 **Deliverables**
 
-- Backend stub chạy được.
+- Backend stub chạy được, với process modes.
 - Frontend shell chạy được.
+- Walking skeleton: end-to-end stub flow.
 - README + DEV-SETUP chuyển từ target-state sang runnable setup bước đầu.
 
 **Exit Criteria**
 
 - `cargo run --bin ai-dreams-server` trả về stub API.
+- `cargo run --bin ai-dreams-server -- --mode api-only` chạy được.
 - `npm run dev` mở được app shell.
+- Walking skeleton: POST /tick → event in DB → GET /events → UI render.
 - Contributor mới clone repo và chạy được skeleton trong < 30 phút.
 
 ---
@@ -103,18 +109,17 @@ Chốt domain model và persistence layer cho V1.
 
 **Features**
 
-- Implement schema SQLite cho:
+- Implement schema SQLite cho **7 core tables** (slim schema — xem [LIMITATIONS.md](LIMITATIONS.md) §M4):
   - `worlds`
   - `regions`
   - `locations`
   - `civilizations`
   - `settlements`
   - `events`
-  - `religions`
-  - `cultures`
-  - `resources`
   - `eras`
-- Tạo migration/initialization flow.
+- **Defer** `religions`, `cultures`, `resources`, `creatures` sang Sprint 7+ (dùng soft references trong `events.affected_entities` JSON trước đó).
+- Tạo migration/initialization flow với **schema version tracking**.
+- Database-per-world: `data/world-{name}.db`.
 - Implement repository/storage layer cơ bản.
 - Tạo world bootstrap không dùng LLM để test persistence.
 
@@ -129,32 +134,42 @@ Chốt domain model và persistence layer cho V1.
 - Có thể tạo world rỗng hoặc world seed và đọc lại sau restart.
 - Vocabulary canon `Region` và `Settlement` được phản ánh trong schema và API.
 
-### Sprint 2 – Event Pipeline, Tick Runner, Guardian/Historian
+### Sprint 2 – Event Pipeline, Tick Runner, Guardian/Historian, Observability
 
 **Goal**
 
-Có simulation loop tối thiểu chạy end-to-end bằng mock logic.
+Có simulation loop tối thiểu chạy end-to-end bằng mock logic, với đầy đủ observability và test harness.
 
 **Features**
 
 - Implement `EventProposal` model.
 - Append-only event log.
-- Tick orchestrator.
-- `AgentModel` abstraction + mock provider.
-- Guardian validation pipeline.
-- Historian canonicalization pipeline.
+- Tick orchestrator với **channel-based simulation control** (`SimCommand`) — xem [LIMITATIONS.md](LIMITATIONS.md) §M3.3.
+- `AgentModel` abstraction + **`MockAgentModel`** với fixture files — xem [LIMITATIONS.md](LIMITATIONS.md) §M1.2.
+- Guardian **declarative rule engine** (TOML rules per event type, composable validators) — xem [LIMITATIONS.md](LIMITATIONS.md) §M2.1–M2.2.
+- Historian **scoring-based canonicalization** — xem [LIMITATIONS.md](LIMITATIONS.md) §M2.3.
 - `POST /worlds/current/tick` cho dev/debug.
+- **`llm_call_log`** table: record/replay mọi LLM call — xem [LIMITATIONS.md](LIMITATIONS.md) §M1.1.
+- **`tick_log`** table + structured tick logging — xem [LIMITATIONS.md](LIMITATIONS.md) §M5.1.
+- **CLI report** (`ai-dreams-server report`) — xem [LIMITATIONS.md](LIMITATIONS.md) §M5.2.
+- **Error classification** (`PipelineStage` tagging) — xem [LIMITATIONS.md](LIMITATIONS.md) §M1.4.
+- **LLM timeout** (30s) + circuit breaker — xem [LIMITATIONS.md](LIMITATIONS.md) §M3.4.
 
 **Deliverables**
 
 - Một tick có thể sinh event, validate, commit vào world state.
 - Phân biệt được raw events và canonical events.
+- `llm_call_log` ghi mọi call, `tick_log` ghi metrics mỗi tick.
+- CLI report tổng hợp được metrics.
+- Mock provider chạy deterministic tick sequence.
 
 **Exit Criteria**
 
 - Manual tick tạo ra event hợp lệ.
-- Guardian reject được event sai ID/progression cơ bản.
-- Historian đánh dấu được event canonical.
+- Guardian reject được event sai ID/progression cơ bản — bằng declarative rules, không hardcode.
+- Historian đánh dấu được event canonical — bằng scoring, không hardcode.
+- `ai-dreams-server report --last 10` hiển thị metrics đúng.
+- Mock fixtures chạy qua pipeline thật thành công.
 
 ---
 
@@ -164,7 +179,7 @@ Có simulation loop tối thiểu chạy end-to-end bằng mock logic.
 
 **Goal**
 
-Có thế giới sinh ra từ hư không với 3 creative agents V1.
+Có thế giới sinh ra từ hư không với 3 creative agents V1, kèm API contract rõ cho frontend.
 
 **Features**
 
@@ -177,17 +192,23 @@ Có thế giới sinh ra từ hư không với 3 creative agents V1.
   - active agents/tick
   - event caps
 - Event listing/filter API.
+- **API contract types** (TypeScript): `WorldSummary`, `WorldEvent`, `EventsResponse`, `TimelineEra` — xem [LIMITATIONS.md](LIMITATIONS.md) §M6.1.
+- **Contract tests** cho API responses — xem [LIMITATIONS.md](LIMITATIONS.md) §M6.2.
+- **Snapshot testing**: golden world state sau mock genesis — xem [LIMITATIONS.md](LIMITATIONS.md) §M1.3.
 
 **Deliverables**
 
 - World đầu tiên có 3–4 regions.
 - Có civilizations/settlements đầu tiên.
 - Event feed data đọc được từ API.
+- API contract types + tests sẵn sàng cho frontend Sprint 4.
 
 **Exit Criteria**
 
 - Sau genesis, world không còn là state rỗng.
 - API event list trả về event có filter theo year/type/agent/civilization.
+- API responses match contract types (contract tests pass).
+- Snapshot test pass cho mock genesis.
 
 ### Sprint 4 – Dream Feed & World Overview UI
 

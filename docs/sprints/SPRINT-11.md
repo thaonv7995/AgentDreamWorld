@@ -1,4 +1,4 @@
-# Sprint 11 – Optional Advanced Infra & Observability
+# Sprint 11 – Optional Advanced Infra & Advanced Observability
 
 ## Sprint Metadata
 
@@ -21,14 +21,14 @@ Thêm khả năng quan sát và profile nâng cao để dự án có đường p
 ## Business Value
 
 - Chuẩn bị scale path.
-- Tăng khả năng đo chi phí và độ ổn định.
+- Tăng khả năng đo chi phí và độ ổn định ở mức nâng cao, trên nền baseline logs/report đã có từ Sprint 02–03.
 - Tạo nền cho contributor/profile deploy phức tạp hơn.
 
 ## In Scope
 
 - Optional Postgres profile.
 - Optional Redis profile.
-- Observability dashboard hoặc metrics path.
+- Advanced observability dashboard/export path trên top của `tick_log`, `llm_call_log`, `report`.
 - Perf/load baseline.
 
 ## Out of Scope
@@ -37,10 +37,11 @@ Thêm khả năng quan sát và profile nâng cao để dự án có đường p
 - Full cloud deployment stack.
 - Multi-world production operations hoàn chỉnh.
 - Re-architect toàn bộ runtime.
+- **Minimal observability baseline** (`tick_log`, `llm_call_log`, `report --last N`, basic cost/reject metrics) vì đã phải hoàn thành từ Sprint 02–03.
 
 ## Primary User Stories
 
-- Với vai trò **operator/maintainer**, tôi muốn theo dõi tick health, cost và reject rate.
+- Với vai trò **operator/maintainer**, tôi muốn theo dõi tick health, cost và reject rate ở mức nâng cao hơn baseline CLI/log path.
 - Với vai trò **advanced contributor**, tôi muốn chạy hệ thống theo profile nâng cao nếu cần.
 - Với vai trò **project lead**, tôi muốn có dữ liệu thật để quyết định có nên scale infra hay không.
 
@@ -48,34 +49,35 @@ Thêm khả năng quan sát và profile nâng cao để dự án có đường p
 
 - [ ] SQLite vẫn là default path.
 - [ ] Advanced profile chạy như lựa chọn, không ép buộc.
-- [ ] Metrics đủ để theo dõi tick health và cost.
+- [ ] Advanced metrics path đọc và tổng hợp được dữ liệu trên nền baseline observability đã có.
 - [ ] Perf/load baseline được ghi nhận thành tài liệu.
 
 ## Dependencies
 
 - MVP/V2 path phải ổn định trước khi mở advanced profile.
 - Config system phải đủ rõ để hỗ trợ nhiều mode.
-- Team thống nhất observability scope tối thiểu.
+- Baseline observability từ Sprint 02–03 phải đã tồn tại và ổn định.
+- Team thống nhất rõ delta giữa baseline observability và advanced observability.
 
 ## Sprint Task Board
 
 | Task ID | Stream | Summary | Priority | Estimate |
 | --- | --- | --- | --- | --- |
 | ADW-S11-BA-01 | BA | Chốt non-goals và KPI/SLI cho advanced profile | P2 | S |
-| ADW-S11-BE-01 | Backend | Tách config profile và expose instrumentation layer | P1 | L |
+| ADW-S11-BE-01 | Backend | Tách config profile và expose advanced instrumentation/export layer | P1 | L |
 | ADW-S11-FE-01 | Frontend | Thêm admin/debug health summary tối thiểu | P2 | S |
-| ADW-S11-DO-01 | DevOps | Thiết lập compose advanced profile và observability baseline | P1 | L |
+| ADW-S11-DO-01 | DevOps | Thiết lập compose advanced profile và advanced observability stack | P1 | L |
 
 ## Risks & Control Notes
 
 - Optional infra không được trở thành prerequisite ngầm cho contributor mới.
-- Observability phải đủ để ra quyết định, không phải mở một stack ops quá nặng cho nhu cầu hiện tại.
+- Observability ở sprint này phải là **advanced layer**, không được duplicate baseline logs/report đã phải có từ Sprint 02–03.
 - Mọi thay đổi config profile phải giữ SQLite-first làm đường mặc định rõ ràng.
 
 ## BA Checklist
 
 - [ ] `BA-11.1` Chốt non-goals cho advanced profile để giữ SQLite-first path.
-- [ ] `BA-11.2` Chốt KPI và SLI cần quan sát trong advanced profile.
+- [ ] `BA-11.2` Chốt KPI và SLI cần quan sát trong advanced profile, đồng thời phân biệt rõ với baseline metrics đã có từ Sprint 02–03.
 - [ ] `BA-11.3` Chốt acceptance criteria cho optional profile và debug health view.
 - [ ] `BA-11.4` Review release impact để không trượt V1/V2 path.
 - [ ] `BA-11.5` Chốt decision points: khi nào advanced infra được xem là cần thiết thật.
@@ -85,7 +87,7 @@ Thêm khả năng quan sát và profile nâng cao để dự án có đường p
 
 - [ ] `BE-11.1` Tách config cho SQLite và Postgres profile mà không đổi default path.
 - [ ] `BE-11.2` Thêm optional Redis hooks, cache hoặc queue path ở mức foundation.
-- [ ] `BE-11.3` Expose metrics endpoint hoặc instrumentation layer.
+- [ ] `BE-11.3` Expose metrics endpoint hoặc instrumentation/export layer trên top của `tick_log`, `llm_call_log`, `report`.
 - [ ] `BE-11.4` Verify compatibility của simulation engine trên nhiều profile.
 - [ ] `BE-11.5` Thêm fallback defaults để app vẫn chạy nếu advanced profile không được bật.
 - [ ] `BE-11.6` Ghi lại config contract cho DevOps và contributors nâng cao.
@@ -102,7 +104,7 @@ Thêm khả năng quan sát và profile nâng cao để dự án có đường p
 ## DevOps Checklist
 
 - [ ] `DO-11.1` Tạo `docker-compose` hoặc local stack cho advanced profile.
-- [ ] `DO-11.2` Thiết lập observability stack tối thiểu cho metrics/logs cần thiết.
+- [ ] `DO-11.2` Thiết lập advanced observability stack cho metrics/logs/traces nếu cần, nhưng không thay baseline local logs/report path.
 - [ ] `DO-11.3` Chạy load hoặc perf test cơ bản cho advanced profile.
 - [ ] `DO-11.4` Thiết lập backup/restore baseline cho data profiles.
 - [ ] `DO-11.5` Chuẩn bị runbook bật/tắt advanced profile mà không ảnh hưởng default path.
@@ -111,7 +113,7 @@ Thêm khả năng quan sát và profile nâng cao để dự án có đường p
 ## Demo & Sign-off
 
 - Demo default SQLite path vẫn chạy.
-- Demo advanced profile và metrics path như option.
+- Demo advanced profile và advanced metrics path như option, trên nền baseline observability sẵn có.
 - [ ] Acceptance criteria được review đủ.
 - [ ] Default SQLite path vẫn là luồng cài đặt và chạy chính.
 - [ ] Carry-over items được ghi lại sang Sprint 12 hoặc `MASTER-BACKLOG.md`.

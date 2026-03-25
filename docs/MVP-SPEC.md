@@ -81,6 +81,8 @@ Rule runtime V1:
 
 - Mỗi tick chỉ chọn **2–3 creative agents** active từ `Creator`, `Civilization`, `Storyteller`.
 - `Historian` và `Guardian` luôn chạy sau bước proposal, không tính vào quota 2–3 agents active/tick.
+- Guardian dùng **declarative rule engine** — rules định nghĩa trong `rules/{event_type}.toml`, composable validators.
+- Historian dùng **scoring-based canonicalization** — không hardcode, có thể tune qua config.
 - Các agents khác (`Culture`, `Myth`, `Ecology`, `Economy`, `Chaos`) là optional/V2 – có thể mock hoặc disable từng phần.
 
 ### 3.2. Agent Protocol V1
@@ -119,11 +121,14 @@ Không cần full REST spec, chỉ cần các nhóm endpoint:
 
 ### 4.2. Backend runtime
 
-- Service duy nhất `ai-dreams-server`:
-  - HTTP API.
-  - Simulation scheduler (tick loop) chạy nền.
-  - LLM client (AgentModel) gọi tới provider.
-  - SQLite access.
+- Service duy nhất `ai-dreams-server`, hỗ trợ **process modes**:
+  - `--mode full` (default): HTTP API + simulation loop.
+  - `--mode api-only`: chỉ HTTP (cho frontend dev).
+  - `--mode sim-only`: chỉ simulation (cho debug tick).
+  - `--mode single-tick`: chạy đúng 1 tick rồi exit (cho testing).
+- HTTP API và simulation loop chạy trong tokio task groups riêng, giao tiếp qua channel.
+- LLM client (AgentModel) có timeout 30s + circuit breaker.
+- SQLite access: database-per-world (`data/world-{name}.db`).
 
 ---
 
@@ -156,8 +161,19 @@ Không yêu cầu map 2D đầy đủ, knowledge graph, hay UI art phức tạp 
   - Cấu hình qua `.env`: `AI_DREAMS_LLM_PROVIDER`, `AI_DREAMS_LLM_API_KEY`.
 
 - **Storage**
-  - SQLite embedded (`data/ai-dreams.db`).
+  - SQLite embedded, database-per-world (`data/world-{name}.db`).
   - Export files (wiki/annals) trong `exports/`.
+
+- **Observability (từ Sprint 2)**
+  - Structured tick log: tick_id, agents, proposals accepted/rejected, reject reasons, tokens, latency, cost.
+  - `llm_call_log` table: record/replay mọi LLM call.
+  - CLI report: `ai-dreams-server report --last N`.
+  - Không cần Grafana/Prometheus cho V1.
+
+- **Test Harness**
+  - `MockAgentModel` + fixture files cho deterministic testing.
+  - Snapshot testing: golden world state sau N mock ticks.
+  - Contract tests cho API response shapes.
 
 Postgres/Redis/remote storage là lựa chọn V2+, không bắt buộc cho MVP.
 

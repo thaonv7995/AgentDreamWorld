@@ -23,16 +23,22 @@ Thiết lập “xương sống” của Dream Engine: proposal, validation, can
 - Chứng minh core architecture hoạt động thật.
 - Tạo đường sống cho mọi feature simulation về sau.
 - Tách rõ imagination layer và canonical layer ngay từ đầu.
+- Tạo debug spine đủ mạnh trước khi gọi LLM thật: mock path, call logs, tick logs, error tagging.
 
 ## In Scope
 
 - `EventProposal`.
 - Append-only event log.
-- Tick orchestrator.
-- Mock `AgentModel`.
-- Guardian validation baseline.
-- Historian canonicalization baseline.
+- Tick orchestrator với **channel-based simulation control** (`SimCommand`).
+- Mock `AgentModel` + **fixture files** cho deterministic testing.
+- Guardian validation baseline — **declarative rule engine** (TOML rules per event type).
+- Historian canonicalization baseline — **scoring-based**.
 - `POST /worlds/current/tick`.
+- **`llm_call_log`** table (record/replay mọi LLM call).
+- **`tick_log`** table + structured tick logging.
+- **CLI report** command (`ai-dreams-server report`).
+- **Error classification** (`PipelineStage` tagging).
+- Record/replay-ready logging contract để Sprint 03 có thể thêm replay mode mà không đổi schema log.
 
 ## Out of Scope
 
@@ -50,10 +56,16 @@ Thiết lập “xương sống” của Dream Engine: proposal, validation, can
 ## Acceptance Criteria
 
 - [ ] Manual tick tạo ra event hợp lệ.
-- [ ] Guardian reject được event sai ID hoặc sai progression cơ bản.
-- [ ] Historian đánh dấu được canonical event.
+- [ ] Guardian reject được event sai ID hoặc sai progression cơ bản — dùng **declarative rules** (TOML), không hardcode.
+- [ ] Historian đánh dấu được canonical event — dùng **scoring-based** logic.
 - [ ] Raw events và canonical events được phân biệt rõ.
 - [ ] Event log append-only hoạt động đúng.
+- [ ] **`llm_call_log`** ghi được mọi LLM call (prompt, response, latency, tokens, parsed_ok, validated).
+- [ ] **Structured tick log** emit được sau mỗi tick (reject reasons, token count, cost estimate).
+- [ ] **`ai-dreams-server report --last N`** hiển thị được tổng hợp metrics.
+- [ ] **Mock provider** chạy được deterministic tick sequence từ fixture files.
+- [ ] Dữ liệu trong **`llm_call_log`** đủ để replay parser → Guardian → Historian mà không cần live provider.
+- [ ] **Simulation control**: pause/resume/tick qua channel hoạt động.
 
 ## Dependencies
 
@@ -74,6 +86,7 @@ Thiết lập “xương sống” của Dream Engine: proposal, validation, can
 
 - Dễ nhầm raw event với canonical event nếu không tách rõ trạng thái và ownership.
 - Không gắn prompt/provider logic thật quá sớm vào tick runner; mock path phải đứng được một mình.
+- Không đẩy minimal observability sang Sprint 11; baseline logs/report phải hoàn thành ngay ở sprint này.
 - Tick endpoint chỉ phục vụ dev/debug ở sprint này, chưa phải public control surface hoàn chỉnh.
 
 ## BA Checklist
@@ -84,16 +97,23 @@ Thiết lập “xương sống” của Dream Engine: proposal, validation, can
 - [ ] `BA-02.4` Chốt tiêu chí reject cơ bản của Guardian và tiêu chí promote của Historian.
 - [ ] `BA-02.5` Chuẩn bị sample scenarios cho valid tick, rejected tick và canonicalized tick.
 - [ ] `BA-02.6` Review docs event-model để đảm bảo runtime team và frontend team đọc cùng một pipeline.
+- [ ] `BA-02.7` Chốt log contract tối thiểu cho `llm_call_log`, `tick_log` và `report --last N` để Sprint 03 có thể thêm replay/snapshot mà không đổi format.
 
 ## Backend Checklist
 
 - [ ] `BE-02.1` Implement `EventProposal` model và relation với world state hiện tại.
 - [ ] `BE-02.2` Implement append-only event persistence cho raw events và canonical events.
-- [ ] `BE-02.3` Implement tick orchestrator điều phối generate -> validate -> canonicalize -> commit.
-- [ ] `BE-02.4` Implement mock `AgentModel` để tick chạy không phụ thuộc provider thật.
-- [ ] `BE-02.5` Implement Guardian rules baseline cho ID, chronology và progression checks.
-- [ ] `BE-02.6` Implement Historian canonicalization baseline và canonical marker.
+- [ ] `BE-02.3` Implement tick orchestrator điều phối generate → validate → canonicalize → commit, **giao tiếp qua `SimCommand` channel**. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M3.3.
+- [ ] `BE-02.4` Implement **`MockAgentModel`** + fixture file loading để tick chạy deterministic không phụ thuộc provider thật. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M1.2.
+- [ ] `BE-02.5` Implement Guardian **declarative rule engine**: load rules từ `rules/{event_type}.toml`, chạy composable validators. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M2.1–M2.2.
+- [ ] `BE-02.6` Implement Historian **scoring-based canonicalization** và canonical marker. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M2.3.
 - [ ] `BE-02.7` Expose `POST /worlds/current/tick` và verify happy path lẫn reject path.
+- [ ] `BE-02.8` Implement **`llm_call_log`** table + logging mọi LLM call (prompt_hash, response, parsed_ok, validated, latency, tokens). Xem [LIMITATIONS.md](../LIMITATIONS.md) §M1.1.
+- [ ] `BE-02.9` Implement **`tick_log`** table + structured tick log entry sau mỗi tick. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M5.1.
+- [ ] `BE-02.10` Implement **CLI report** command (`ai-dreams-server report --last N`). Xem [LIMITATIONS.md](../LIMITATIONS.md) §M5.2.
+- [ ] `BE-02.11` Implement **error classification** với `PipelineStage` enum (PromptBuild/LlmCall/JsonParse/GuardianValidate/HistorianCanonize/StateCommit). Xem [LIMITATIONS.md](../LIMITATIONS.md) §M1.4.
+- [ ] `BE-02.12` Implement **LLM timeout** (30s) + circuit breaker cho `AgentModel` calls. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M3.4.
+- [ ] `BE-02.13` Ensure `llm_call_log` schema lưu đủ dữ liệu cho replay path ở Sprint 03: prompt_hash, prompt_text, raw response, parsed/validated/canonical flags, stage-tagged error.
 
 ## Frontend Checklist
 
@@ -112,6 +132,10 @@ Thiết lập “xương sống” của Dream Engine: proposal, validation, can
 - [ ] `DO-02.4` Thêm smoke test cho reject/failure path tối thiểu.
 - [ ] `DO-02.5` Thiết lập error logging tối thiểu cho orchestration và DB write failures.
 - [ ] `DO-02.6` Chuẩn bị commands reset/reseed world để lặp lại demo tick flow ổn định.
+- [ ] `DO-02.7` Tạo **fixture files** mẫu cho `MockAgentModel` (ít nhất 3: creation, civilization_foundation, narrative).
+- [ ] `DO-02.8` Tạo **rule files** mẫu cho Guardian (ít nhất `rules/creation.toml`, `rules/civilization_foundation.toml`).
+- [ ] `DO-02.9` Verify **`ai-dreams-server report`** chạy được và output đúng format.
+- [ ] `DO-02.10` Verify mock tick run 20-50 lần vẫn tạo log/report ổn định và đọc được top reject reasons.
 
 ## Demo & Sign-off
 

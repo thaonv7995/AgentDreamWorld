@@ -26,8 +26,9 @@ Xây nền dữ liệu đủ ổn định để toàn bộ simulation, API và U
 
 ## In Scope
 
-- SQLite schema V1.
-- Migration/init flow.
+- SQLite schema V1 — **chỉ 7 core tables** (worlds, regions, locations, civilizations, settlements, events, eras). Defer creatures/religions/cultures/resources sang Sprint 7+.
+- Database-per-world naming: `data/world-{name}.db`.
+- Migration/init flow với schema version tracking.
 - Repository/storage layer cơ bản.
 - World seed bootstrap không dùng LLM.
 - `GET /worlds/current` trả world summary thật.
@@ -76,7 +77,7 @@ Xây nền dữ liệu đủ ổn định để toàn bộ simulation, API và U
 
 ## BA Checklist
 
-- [ ] `BA-01.1` Chốt glossary entity V1: World, Region, Location, Civilization, Settlement, Event, Era.
+- [ ] `BA-01.1` Chốt glossary entity V1 core: World, Region, Location, Civilization, Settlement, Event, Era. Xác nhận **creatures/religions/cultures/resources defer sang V2+**.
 - [ ] `BA-01.2` Chốt field-level contract cho `GET /worlds/current` gồm summary blocks bắt buộc và empty-state behavior.
 - [ ] `BA-01.3` Chốt definition của seed world: tối thiểu có gì, chưa cần gì, và điều gì bị cấm trong Sprint 01.
 - [ ] `BA-01.4` Đối chiếu `world-model.md` và `database-schema.md` để loại bỏ drift trước khi code schema.
@@ -87,11 +88,12 @@ Xây nền dữ liệu đủ ổn định để toàn bộ simulation, API và U
 
 - [ ] `BE-01.1` Implement schema cho `worlds`, `regions`, `locations` theo canon V1.
 - [ ] `BE-01.2` Implement schema cho `civilizations`, `settlements` với quan hệ rõ ràng tới region/location.
-- [ ] `BE-01.3` Implement schema cho `events`, `eras`, `religions`, `cultures`, `resources` ở mức foundation.
-- [ ] `BE-01.4` Tạo migration/init flow để app boot được DB từ zero state.
+- [ ] `BE-01.3` Implement schema cho `events`, `eras`. **Không tạo** `religions`, `cultures`, `resources`, `creatures` — defer sang Sprint 7+. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M4.
+- [ ] `BE-01.4` Tạo migration/init flow với **schema version tracking** (`schema_version` table) để app boot được DB từ zero state.
 - [ ] `BE-01.5` Tạo repository/storage layer tối thiểu cho world summary và seed bootstrap.
 - [ ] `BE-01.6` Tạo world seed bootstrap không dùng LLM để test persistence deterministically.
 - [ ] `BE-01.7` Expose `GET /worlds/current` bằng dữ liệu thật từ SQLite và verify restart vẫn giữ state.
+- [ ] `BE-01.8` **Database-per-world**: SQLite file path theo pattern `data/world-{name}.db`, configurable qua `AI_DREAMS_WORLD_DB`. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M7.1.
 
 ## Frontend Checklist
 

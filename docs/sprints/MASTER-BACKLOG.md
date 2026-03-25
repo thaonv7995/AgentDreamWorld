@@ -51,18 +51,18 @@ Mục đích:
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S02-BA-01 | Chốt event lifecycle và raw/canonical rules | BA | BA Lead | S | Not Started | ADW-S01-BA-01 | Chốt contract tick endpoint |
-| ADW-S02-BE-01 | Implement event pipeline và manual tick | Backend | Backend Lead | L | Not Started | ADW-S01-BE-01 | EventProposal, append-only log, tick orchestrator |
+| ADW-S02-BE-01 | Implement event pipeline và manual tick | Backend | Backend Lead | L | Not Started | ADW-S01-BE-01 | EventProposal, append-only log, tick orchestrator, `llm_call_log`, `tick_log` |
 | ADW-S02-FE-01 | Tạo debug tick trigger và event list shell | Frontend | Frontend Lead | S | Not Started | ADW-S02-BE-01 | Phục vụ demo và test |
-| ADW-S02-DO-01 | Thêm logs, env flags, smoke test cho tick lifecycle | DevOps | DevOps Lead | S | Not Started | ADW-S02-BE-01 | Mock/live mode |
+| ADW-S02-DO-01 | Thêm logs, env flags, smoke test cho tick lifecycle | DevOps | DevOps Lead | S | Not Started | ADW-S02-BE-01 | Mock/live mode, report path, top reject reasons |
 
 ## Sprint 03 – Genesis Mode & 3 Creative Agents V1
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S03-BA-01 | Chốt acceptance criteria cho Genesis và quality rubric 3 agents V1 | BA | BA Lead | S | Not Started | ADW-S02-BA-01 | Chốt data tối thiểu sau genesis |
-| ADW-S03-BE-01 | Implement Creator, Civilization, Storyteller và Genesis runner | Backend | Backend Lead | XL | Not Started | ADW-S02-BE-01 | Áp boundaries vào bootstrap |
-| ADW-S03-FE-01 | Render event/world data thật sau genesis | Frontend | Frontend Lead | M | Not Started | ADW-S03-BE-01 | Có loading state và filter shell |
-| ADW-S03-DO-01 | Thiết lập provider profiles, retry/timeout, smoke genesis run | DevOps | DevOps Lead | M | Not Started | ADW-S03-BE-01 | Mock/live |
+| ADW-S03-BE-01 | Implement Creator, Civilization, Storyteller và Genesis runner | Backend | Backend Lead | XL | Not Started | ADW-S02-BE-01 | Áp boundaries vào bootstrap, replay mode, API contract tests |
+| ADW-S03-FE-01 | Render event/world data thật sau genesis | Frontend | Frontend Lead | M | Not Started | ADW-S03-BE-01 | Có loading state, filter shell, feed/timeline projection contract |
+| ADW-S03-DO-01 | Thiết lập provider profiles, retry/timeout, smoke genesis run | DevOps | DevOps Lead | M | Not Started | ADW-S03-BE-01 | Mock/live, snapshot/replay verify |
 
 ## Sprint 04 – Dream Feed & World Overview UI
 
@@ -127,14 +127,14 @@ Mục đích:
 | ADW-S10-FE-01 | Implement Mythology Browser và Knowledge Graph beta | Frontend | Frontend Lead | XL | Not Started | ADW-S10-BE-01 | Kèm cross-navigation |
 | ADW-S10-DO-01 | Theo dõi perf graph rendering và query latency | DevOps | DevOps Lead | S | Not Started | ADW-S10-FE-01 | Visual regression/demo checklist |
 
-## Sprint 11 – Optional Advanced Infra & Observability
+## Sprint 11 – Optional Advanced Infra & Advanced Observability
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ADW-S11-BA-01 | Chốt non-goals và KPI/SLI cho advanced profile | BA | BA Lead | S | Not Started | ADW-S10-BA-01 | Giữ SQLite là default path |
-| ADW-S11-BE-01 | Tách config profile và expose instrumentation layer | Backend | Backend Lead | L | Not Started | ADW-S10-BE-01 | Optional Postgres/Redis |
+| ADW-S11-BA-01 | Chốt non-goals và KPI/SLI cho advanced profile | BA | BA Lead | S | Not Started | ADW-S10-BA-01 | Giữ SQLite là default path, không duplicate baseline observability |
+| ADW-S11-BE-01 | Tách config profile và expose advanced instrumentation layer | Backend | Backend Lead | L | Not Started | ADW-S10-BE-01 | Optional Postgres/Redis, dùng lại `tick_log`/`llm_call_log` |
 | ADW-S11-FE-01 | Thêm debug/admin health summary tối thiểu | Frontend | Frontend Lead | S | Not Started | ADW-S11-BE-01 | Không làm nhiễu user UI |
-| ADW-S11-DO-01 | Thiết lập compose advanced profile và observability baseline | DevOps | DevOps Lead | L | Not Started | ADW-S11-BE-01 | Load/perf test, backup/restore baseline |
+| ADW-S11-DO-01 | Thiết lập compose advanced profile và advanced observability stack | DevOps | DevOps Lead | L | Not Started | ADW-S11-BE-01 | Load/perf test, backup/restore baseline |
 
 ## Sprint 12 – Multi-world Foundation & Project Ops
 
@@ -144,4 +144,3 @@ Mục đích:
 | ADW-S12-BE-01 | Implement multi-world metadata model và snapshot/fork foundation | Backend | Backend Lead | XL | Not Started | ADW-S11-BE-01 | Kèm backward compatibility path |
 | ADW-S12-FE-01 | Tạo world selector/world list shell | Frontend | Frontend Lead | M | Not Started | ADW-S12-BE-01 | Chuẩn bị future alternate timeline UX |
 | ADW-S12-DO-01 | Tạo ops runbook và workflows backup/restore multi-world | DevOps | DevOps Lead | M | Not Started | ADW-S12-BE-01 | Monitoring for world growth |
-

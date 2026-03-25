@@ -33,6 +33,8 @@ Thiết lập nền thực thi để team có thể bắt đầu phát triển t
 - `scripts/dev.sh`.
 - README/DEV-SETUP cập nhật theo trạng thái runnable thật.
 - Build/lint scripts tối thiểu.
+- **Process modes** (`--mode full/api-only/sim-only/single-tick`) — xem [LIMITATIONS.md](../LIMITATIONS.md) §M3.1.
+- **Walking skeleton**: stub tick → mock event in DB → API response → UI render.
 
 ## Out of Scope
 
@@ -51,10 +53,12 @@ Thiết lập nền thực thi để team có thể bắt đầu phát triển t
 
 - [ ] Repo có Rust workspace và frontend app shell rõ ràng.
 - [ ] `cargo run --bin ai-dreams-server` chạy được stub server.
+- [ ] `cargo run --bin ai-dreams-server -- --mode api-only` chạy được chỉ HTTP.
 - [ ] `npm run dev` mở được app shell.
-- [ ] `.env.example` tồn tại và mô tả đúng biến môi trường tối thiểu.
+- [ ] `.env.example` tồn tại và mô tả đúng biến môi trường tối thiểu (bao gồm `AI_DREAMS_WORLD_DB`).
 - [ ] README và DEV-SETUP không còn mô tả sai trạng thái runnable của repo.
 - [ ] Contributor mới có thể first-run trong < 30 phút.
+- [ ] Walking skeleton: `POST /tick` (stub) → event in DB → `GET /events` → JSON → UI render.
 
 ## Dependencies
 
@@ -90,10 +94,12 @@ Thiết lập nền thực thi để team có thể bắt đầu phát triển t
 
 - [ ] `BE-00.1` Tạo Rust workspace root và cấu trúc thư mục backend đúng naming convention của dự án.
 - [ ] `BE-00.2` Tạo crate/binary `ai-dreams-server` với entrypoint chạy được bằng `cargo run --bin ai-dreams-server`.
-- [ ] `BE-00.3` Thêm config loading tối thiểu từ env và fallback values cho local development.
+- [ ] `BE-00.3` Thêm config loading tối thiểu từ env và fallback values cho local development (bao gồm `AI_DREAMS_WORLD_DB`).
 - [ ] `BE-00.4` Expose `health` hoặc `world stub` endpoint để frontend có target kết nối ban đầu.
 - [ ] `BE-00.5` Thiết lập logging cơ bản đủ để đọc startup/config/runtime errors.
 - [ ] `BE-00.6` Verify backend boot thành công trên local clean path không cần setup ngoài docs đã nêu.
+- [ ] `BE-00.7` **Implement process modes** (`--mode full/api-only/sim-only/single-tick`) với CLI flag parsing. Xem [LIMITATIONS.md](../LIMITATIONS.md) §M3.1.
+- [ ] `BE-00.8` **Thiết lập tokio task group separation** cho HTTP và simulation (stub). Xem [LIMITATIONS.md](../LIMITATIONS.md) §M3.2.
 
 ## Frontend Checklist
 
