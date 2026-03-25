@@ -28,7 +28,37 @@ Mục đích:
 
 ---
 
+## Sprint Board References
+
+| Sprint | Issue-Ready Board |
+| --- | --- |
+| Sprint 00 | `issue-ready/SPRINT-00.md` |
+| Sprint 01 | `issue-ready/SPRINT-01.md` |
+| Sprint 02 | `issue-ready/SPRINT-02.md` |
+| Sprint 03 | `issue-ready/SPRINT-03.md` |
+| Sprint 04 | `issue-ready/SPRINT-04.md` |
+| Sprint 05 | `issue-ready/SPRINT-05.md` |
+| Sprint 06 | `issue-ready/SPRINT-06.md` |
+| Sprint 07 | `issue-ready/SPRINT-07.md` |
+| Sprint 08 | `issue-ready/SPRINT-08.md` |
+| Sprint 09 | `issue-ready/SPRINT-09.md` |
+| Sprint 10 | `issue-ready/SPRINT-10.md` |
+| Sprint 11 | `issue-ready/SPRINT-11.md` |
+| Sprint 12 | `issue-ready/SPRINT-12.md` |
+| Sprint 13 | `issue-ready/SPRINT-13.md` |
+| Sprint 14 | `issue-ready/SPRINT-14.md` |
+| Sprint 15 | `issue-ready/SPRINT-15.md` |
+| Sprint 16 | `issue-ready/SPRINT-16.md` |
+| Sprint 17 | `issue-ready/SPRINT-17.md` |
+| Sprint 18 | `issue-ready/SPRINT-18.md` |
+| Sprint 19 | `issue-ready/SPRINT-19.md` |
+| Sprint 20 | `issue-ready/SPRINT-20.md` |
+
+---
+
 ## Sprint 00 – Repo Scaffold & Delivery Rails
+
+Execution Board: `issue-ready/SPRINT-00.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -39,6 +69,8 @@ Mục đích:
 
 ## Sprint 01 – World Model, SQLite Schema, Persistence
 
+Execution Board: `issue-ready/SPRINT-01.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S01-BA-01 | Chốt glossary entity và contract `GET /worlds/current` | BA | BA Lead | S | Not Started | ADW-S00-BA-01 | Khóa `Region` và `Settlement` |
@@ -47,6 +79,8 @@ Mục đích:
 | ADW-S01-DO-01 | Thêm smoke test cho DB init và seed path | DevOps | DevOps Lead | S | Not Started | ADW-S01-BE-01 | Kèm chuẩn hóa `data/` path |
 
 ## Sprint 02 – Event Pipeline, Tick Runner, Guardian/Historian
+
+Execution Board: `issue-ready/SPRINT-02.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -57,6 +91,8 @@ Mục đích:
 
 ## Sprint 03 – Genesis Mode & 3 Creative Agents V1
 
+Execution Board: `issue-ready/SPRINT-03.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S03-BA-01 | Chốt acceptance criteria cho Genesis và quality rubric 3 agents V1 | BA | BA Lead | S | Not Started | ADW-S02-BA-01 | Chốt data tối thiểu sau genesis |
@@ -65,6 +101,8 @@ Mục đích:
 | ADW-S03-DO-01 | Thiết lập provider profiles, retry/timeout, smoke genesis run | DevOps | DevOps Lead | M | Not Started | ADW-S03-BE-01 | Mock/live, snapshot/replay verify |
 
 ## Sprint 04 – Dream Feed & World Overview UI
+
+Execution Board: `issue-ready/SPRINT-04.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -75,6 +113,8 @@ Mục đích:
 
 ## Sprint 05 – Timeline, Simulation Controls, God Mode Lite
 
+Execution Board: `issue-ready/SPRINT-05.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S05-BA-01 | Chốt UX timeline và preset God Mode V1 | BA | BA Lead | S | Not Started | ADW-S04-BA-01 | Chốt rule hậu quả tối thiểu |
@@ -83,6 +123,8 @@ Mục đích:
 | ADW-S05-DO-01 | Chuẩn bị staging/demo profile cho timeline + God Mode | DevOps | DevOps Lead | S | Not Started | ADW-S05-BE-01 | Kèm replay demo commands |
 
 ## Sprint 06 – Export, Single-Binary Mode, MVP Hardening
+
+Execution Board: `issue-ready/SPRINT-06.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -93,6 +135,8 @@ Mục đích:
 
 ## Sprint 07 – Culture, Myth, Era Summaries
 
+Execution Board: `issue-ready/SPRINT-07.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S07-BA-01 | Chốt acceptance criteria cho Culture/Myth và schema era summary | BA | BA Lead | S | Not Started | ADW-S06-BA-01 | Tạo lore quality rubric |
@@ -101,6 +145,8 @@ Mục đích:
 | ADW-S07-DO-01 | Theo dõi token cost và soak era transition | DevOps | DevOps Lead | S | Not Started | ADW-S07-BE-01 | Version prompts/rules |
 
 ## Sprint 08 – Ecology, Economy, Chaos, Macro Rules
+
+Execution Board: `issue-ready/SPRINT-08.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -111,6 +157,8 @@ Mục đích:
 
 ## Sprint 09 – Region Map & Civilization Viewer
 
+Execution Board: `issue-ready/SPRINT-09.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S09-BA-01 | Chốt UX map beta và content bắt buộc của Civilization Viewer | BA | BA Lead | S | Not Started | ADW-S08-BA-01 | Chốt territory/ownership display |
@@ -119,6 +167,8 @@ Mục đích:
 | ADW-S09-DO-01 | Thiết lập perf budget và preview deployment cho visual QA | DevOps | DevOps Lead | S | Not Started | ADW-S09-FE-01 | Chuẩn bị demo snapshots |
 
 ## Sprint 10 – Mythology Browser & Knowledge Graph
+
+Execution Board: `issue-ready/SPRINT-10.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -129,6 +179,8 @@ Mục đích:
 
 ## Sprint 11 – Optional Advanced Infra & Advanced Observability
 
+Execution Board: `issue-ready/SPRINT-11.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S11-BA-01 | Chốt non-goals và KPI/SLI cho advanced profile | BA | BA Lead | S | Not Started | ADW-S10-BA-01 | Giữ SQLite là default path, không duplicate baseline observability |
@@ -137,6 +189,8 @@ Mục đích:
 | ADW-S11-DO-01 | Thiết lập compose advanced profile và advanced observability stack | DevOps | DevOps Lead | L | Not Started | ADW-S11-BE-01 | Load/perf test, backup/restore baseline |
 
 ## Sprint 12 – Multi-world Foundation & Project Ops
+
+Execution Board: `issue-ready/SPRINT-12.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -147,6 +201,8 @@ Mục đích:
 
 ## Sprint 13 – Multi-world Manager, Presets & World Lifecycle UX
 
+Execution Board: `issue-ready/SPRINT-13.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S13-BA-01 | Chốt UX và lifecycle rules cho multi-world manager | BA | BA Lead | S | Not Started | ADW-S12-BA-01 | Bao gồm presets và archive states |
@@ -155,6 +211,8 @@ Mục đích:
 | ADW-S13-DO-01 | Thiết lập ops checks cho nhiều world active/archive | DevOps | DevOps Lead | M | Not Started | ADW-S13-BE-01 | Storage growth, backup naming |
 
 ## Sprint 14 – Pace Control, Event Log Viewer & Config Inspector
+
+Execution Board: `issue-ready/SPRINT-14.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -165,6 +223,8 @@ Mục đích:
 
 ## Sprint 15 – Advanced God Mode & Story Arc Highlighter
 
+Execution Board: `issue-ready/SPRINT-15.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S15-BA-01 | Chốt guardrails cho Advanced God Mode và taxonomy story arcs | BA | BA Lead | S | Not Started | ADW-S14-BA-01 | Scope/intensity rules, arc categories |
@@ -173,6 +233,8 @@ Mục đích:
 | ADW-S15-DO-01 | Chạy coherence/cost review cho advanced intervention paths | DevOps | DevOps Lead | M | Not Started | ADW-S15-BE-01 | Detect intervention instability |
 
 ## Sprint 16 – World Forking, Alternate Timeline Compare & Snapshot Sharing
+
+Execution Board: `issue-ready/SPRINT-16.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -183,6 +245,8 @@ Mục đích:
 
 ## Sprint 17 – Per-agent Model Profiles, Local LLM & Multi-provider Settings
 
+Execution Board: `issue-ready/SPRINT-17.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S17-BA-01 | Chốt profile matrix và user-facing settings model cho providers | BA | BA Lead | S | Not Started | ADW-S16-BA-01 | Global vs per-agent-group |
@@ -191,6 +255,8 @@ Mục đích:
 | ADW-S17-DO-01 | Thiết lập provider smoke matrix và local profile ops notes | DevOps | DevOps Lead | M | Not Started | ADW-S17-BE-01 | Health checks, fallback tests |
 
 ## Sprint 18 – Myths Export, Highlight Packs & Creator Publishing Pipeline
+
+Execution Board: `issue-ready/SPRINT-18.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -201,6 +267,8 @@ Mục đích:
 
 ## Sprint 19 – Community Worlds, Package Export/Import & Shared Gallery
 
+Execution Board: `issue-ready/SPRINT-19.md`
+
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ADW-S19-BA-01 | Chốt world package spec, provenance fields và gallery UX | BA | BA Lead | S | Not Started | ADW-S18-BA-01 | Bao gồm moderation metadata |
@@ -209,6 +277,8 @@ Mục đích:
 | ADW-S19-DO-01 | Tạo moderation/runbook và package compatibility checks | DevOps | DevOps Lead | M | Not Started | ADW-S19-BE-01 | Trust, review, schema compatibility |
 
 ## Sprint 20 – Collaborative Viewing, Shared Sessions & Social Safety Rails
+
+Execution Board: `issue-ready/SPRINT-20.md`
 
 | ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -12,6 +12,9 @@ Thư mục này tách `IMPLEMENTATION-PLAN.md` thành các file nhỏ hơn theo 
 ## Cách dùng
 
 - Mỗi sprint có 1 file riêng theo format **BA sprint document**.
+- Mỗi sprint cũng có 1 file companion trong `implementation/` để chốt hướng thực thi kỹ thuật.
+- Mỗi sprint cũng có 1 file companion trong `task-breakdown/` để bẻ nhỏ thành atomic tasks.
+- Mỗi sprint cũng có 1 file companion trong `issue-ready/` để team tick execution theo `Epic -> Issue -> Subtask`.
 - Checklist được chia theo 4 role chính:
   - `BA`
   - `Backend`
@@ -74,6 +77,9 @@ Thư mục này tách `IMPLEMENTATION-PLAN.md` thành các file nhỏ hơn theo 
 
 - Backlog tổng theo sprint/role/estimate/status: `MASTER-BACKLOG.md`
 - Mỗi file sprint phải tham chiếu lại task IDs tương ứng từ backlog tổng.
+- Implementation companions: `implementation/README.md`
+- Task breakdown companions: `task-breakdown/README.md`
+- Issue-ready execution boards: `issue-ready/README.md`
 
 ---
 
