@@ -25,6 +25,7 @@ Backlog điều phối theo sprint/role/estimate/status nằm trong `docs/sprint
 | Code scaffold | Chưa bắt đầu |
 | MVP build | Chưa bắt đầu |
 | Release candidate | Chưa bắt đầu |
+| Full vision horizon | Chưa bắt đầu |
 
 Current active target:
 
@@ -70,6 +71,10 @@ Current active target:
 | Phase 4 – Expanded Simulation | Sprint 7–8 | V2 simulation richness | Culture/Myth/Ecology/Economy/Chaos | Gate E | Not Started |
 | Phase 5 – Visualization | Sprint 9–10 | Deeper exploration | Map, Civilization Viewer, Graph | Gate F | Not Started |
 | Phase 6 – Platform Expansion | Sprint 11–12 | Scale path | optional infra, advanced observability, multi-world foundation | Gate G | Not Started |
+| Phase 7 – Multi-world Productization | Sprint 13–14 | Actual multi-world UX | manager, presets, pace control, inspector tooling | Gate H | Not Started |
+| Phase 8 – Alternate Timelines & Creator Control | Sprint 15–16 | Branching stories & richer intervention | advanced God Mode, story arcs, forking, snapshot sharing | Gate I | Not Started |
+| Phase 9 – Runtime Flexibility & Creator Publishing | Sprint 17–18 | Flexible runtime + creator packs | model profiles, local LLM, myths/highlight exports | Gate J | Not Started |
+| Phase 10 – Community & Collaboration | Sprint 19–20 | Shared world ecosystem | packages, gallery, collaborative viewing | Gate K | Not Started |
 
 ---
 
@@ -84,6 +89,10 @@ Current active target:
 | Gate E – Expanded Simulation Ready | Sprint 8 | Thêm agents V2 mà vẫn giữ coherence |
 | Gate F – Visualization Ready | Sprint 10 | Map + Civilization Viewer + Mythology/Graph usable |
 | Gate G – Platform Expansion Ready | Sprint 12 | Optional advanced infra + advanced observability + multi-world foundation có đường chạy |
+| Gate H – Multi-world Product Ready | Sprint 14 | User tạo/chọn/quản lý nhiều world, tune pace, inspect runtime mà không chạm DB/file thủ công |
+| Gate I – Alternate Timeline Ready | Sprint 16 | Advanced God Mode, story arcs, fork và snapshot compare usable |
+| Gate J – Creator Runtime Ready | Sprint 18 | Multi-provider/profile paths và creator publishing exports usable |
+| Gate K – Community Vision Ready | Sprint 20 | World packages, shared gallery và collaborative viewing usable |
 
 ---
 
@@ -106,6 +115,14 @@ Sử dụng bảng này như tracker cập nhật sau mỗi sprint.
 | Sprint 10 | Visualization | Mythology + graph | browser, graph beta | lore graph demo | Not Started | |
 | Sprint 11 | Platform Expansion | Advanced profile | Postgres/Redis optional, advanced observability | ops/perf demo | Not Started | |
 | Sprint 12 | Platform Expansion | Multi-world foundation | fork/snapshot/gallery metadata | multi-world demo | Not Started | |
+| Sprint 13 | Multi-world Productization | Multi-world manager | world manager, presets, lifecycle UX | multi-world UX demo | Not Started | |
+| Sprint 14 | Multi-world Productization | Pace + inspector tooling | fast-forward, pace control, event log, config inspector | operator tooling demo | Not Started | |
+| Sprint 15 | Alternate Timelines | Advanced God Mode | controlled interventions, story arc highlighter | creator control demo | Not Started | |
+| Sprint 16 | Alternate Timelines | Forking + snapshot sharing | branch compare, alternate timeline UX | fork/compare demo | Not Started | |
+| Sprint 17 | Runtime Flexibility | Per-agent model profiles | provider settings, local LLM, profile routing | provider matrix demo | Not Started | |
+| Sprint 18 | Creator Publishing | Export suite | myths export, highlights, creator packs | creator artifact demo | Not Started | |
+| Sprint 19 | Community | Shared world packages | export/import, gallery, provenance | community world demo | Not Started | |
+| Sprint 20 | Community | Collaborative viewing | shared sessions, permissions, audit trail | shared world session demo | Not Started | |
 
 ---
 
@@ -163,6 +180,10 @@ Sử dụng bảng này như tracker cập nhật sau mỗi sprint.
 | Frontend đi nhanh hơn engine | Trung bình | Cao | UI có nhiều mock hơn real data | Ưu tiên vertical slice thật thay vì UI fake | Open |
 | Single maintainer bottleneck | Cao | Trung bình | Sprint slip liên tiếp | Chia workstreams rõ, giảm WIP, ưu tiên MVP | Open |
 | Monolith coupling khó isolate lỗi | Trung bình | Trung bình | Lỗi provider làm nhiễu toàn app | **Process modes + tokio task isolation + channel-based sim control từ Sprint 0**. Xem [LIMITATIONS.md](LIMITATIONS.md) §M3 | Open |
+| Multi-world UX phình quá nhanh | Cao | Trung bình | World manager/config pages lấn át current-world path | Giữ single-world happy path rõ tới hết Gate H, feature-gate UX nâng cao | Open |
+| Fork/snapshot storage tăng mất kiểm soát | Trung bình | Trung bình | Snapshot count tăng mạnh, restore time chậm | Policy retention, provenance metadata, storage budget review từ Sprint 16 | Open |
+| Shared world packages gây trust/moderation risk | Cao | Trung bình | Import package không rõ nguồn hoặc schema lạ | Versioned package format, provenance, moderation flags trước khi mở gallery | Open |
+| Multi-provider profile drift | Trung bình | Trung bình | Kết quả world khác biệt mạnh giữa profile | Compatibility matrix, smoke worlds, profile contract tests từ Sprint 17 | Open |
 
 ---
 
@@ -225,5 +246,5 @@ Khi replan, bắt buộc cập nhật đồng thời:
 
 - `IMPLEMENTATION-PLAN.md`
 - `PROJECT-MASTER-PLAN.md`
-- `roadmap.md` nếu roadmap horizon thay đổi
+- `ai-dreams-vision.md` nếu roadmap horizon thay đổi
 - `MVP-SPEC.md` nếu Definition of Done hoặc phạm vi V1 thay đổi

@@ -59,6 +59,14 @@ Thư mục này tách `IMPLEMENTATION-PLAN.md` thành các file nhỏ hơn theo 
 | Sprint 10 | Mythology Browser và Knowledge Graph | `SPRINT-10.md` |
 | Sprint 11 | Optional advanced infra và advanced observability | `SPRINT-11.md` |
 | Sprint 12 | Multi-world foundation và project ops | `SPRINT-12.md` |
+| Sprint 13 | Multi-world manager, presets và lifecycle UX | `SPRINT-13.md` |
+| Sprint 14 | Pace control, event log viewer và config inspector | `SPRINT-14.md` |
+| Sprint 15 | Advanced God Mode và Story Arc Highlighter | `SPRINT-15.md` |
+| Sprint 16 | World forking, alternate timeline compare và snapshot sharing | `SPRINT-16.md` |
+| Sprint 17 | Per-agent model profiles, local LLM và multi-provider settings | `SPRINT-17.md` |
+| Sprint 18 | Myths export, highlight packs và creator publishing pipeline | `SPRINT-18.md` |
+| Sprint 19 | Community worlds, package export/import và shared gallery | `SPRINT-19.md` |
+| Sprint 20 | Collaborative viewing, shared sessions và social safety rails | `SPRINT-20.md` |
 
 ---
 

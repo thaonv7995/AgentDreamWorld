@@ -20,7 +20,7 @@ Chuẩn bị cấu trúc dữ liệu và vận hành cho tương lai multi-world
 
 ## Business Value
 
-- Mở đường cho Phase 6 và roadmap dài hạn.
+- Mở đường cho Phase 7+ và roadmap dài hạn.
 - Giảm rủi ro rework lớn khi muốn hỗ trợ nhiều world.
 - Tạo nền vận hành rõ hơn cho lifecycle world data.
 

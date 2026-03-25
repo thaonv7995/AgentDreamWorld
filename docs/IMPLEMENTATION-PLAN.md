@@ -22,6 +22,10 @@ Backlog điều phối cấp delivery nằm trong `docs/sprints/MASTER-BACKLOG.m
   - **Expanded Simulation gate** ở cuối **Sprint 8**
   - **Visualization gate** ở cuối **Sprint 10**
   - **Platform Expansion gate** ở cuối **Sprint 12**
+  - **Multi-world Product gate** ở cuối **Sprint 14**
+  - **Alternate Timeline gate** ở cuối **Sprint 16**
+  - **Creator Runtime gate** ở cuối **Sprint 18**
+  - **Community Vision gate** ở cuối **Sprint 20**
 - V1 phải luôn ưu tiên:
   - `SQLite embedded`
   - 1 world
@@ -57,6 +61,10 @@ Nếu team nhỏ hoặc solo, có thể giữ nguyên thứ tự sprint nhưng k
 | Phase 4 | Sprint 7–8 | Expanded simulation | Culture/Myth/Ecology/Economy/Chaos |
 | Phase 5 | Sprint 9–10 | Visualization expansion | Map, Civilization Viewer, Mythology, Graph |
 | Phase 6 | Sprint 11–12 | Platform expansion | Optional advanced infra + advanced observability + multi-world foundation |
+| Phase 7 | Sprint 13–14 | Multi-world productization | World manager, presets, pace control, inspector tooling |
+| Phase 8 | Sprint 15–16 | Alternate timelines & creator control | Advanced God Mode, story arcs, forking, snapshot sharing |
+| Phase 9 | Sprint 17–18 | Runtime flexibility & creator publishing | Per-agent model profiles, local LLM, creator export suite |
+| Phase 10 | Sprint 19–20 | Community & collaboration | World packages, gallery, collaborative viewing |
 
 ---
 
@@ -431,7 +439,7 @@ Chuẩn bị project cho scale và contributor profile nâng cao.
 
 **Goal**
 
-Mở nền cho roadmap Phase 5 mà chưa đòi full community feature.
+Mở nền cho horizon multi-world/community phía sau mà chưa đòi full productization.
 
 **Features**
 
@@ -452,6 +460,292 @@ Mở nền cho roadmap Phase 5 mà chưa đòi full community feature.
 
 ---
 
+## Phase 7 – Multi-world Productization
+
+### Sprint 13 – Multi-world Manager, Presets & World Lifecycle UX
+
+**Goal**
+
+Biến multi-world foundation thành một product path thực sự usable cho creator và explorer.
+
+**Features**
+
+- Multi-world Manager UI:
+  - world list
+  - create/select/archive world
+  - current world switching
+- World creation presets:
+  - Balanced
+  - High Chaos
+  - Myth-Heavy
+- Per-world settings metadata:
+  - world label
+  - genre hints
+  - chaos level
+  - active profile summary
+- World lifecycle states:
+  - active
+  - paused
+  - archived
+- Gallery shell cho nhiều world thật, không chỉ metadata foundation.
+
+**Deliverables**
+
+- User tạo được nhiều world từ UI.
+- User chuyển world hiện tại mà không cần thao tác file thủ công.
+- Preset/theme world xuất hiện rõ trong metadata và flow tạo world.
+
+**Exit Criteria**
+
+- Có thể tạo tối thiểu 2–3 world với preset khác nhau và mở lại được.
+- Switching giữa các world không làm rò state sang nhau.
+- Current-world path cũ vẫn đơn giản cho user chỉ dùng 1 world.
+
+### Sprint 14 – Pace Control, Fast-forward, Event Log Viewer, Config Inspector
+
+**Goal**
+
+Làm cho hệ multi-world có thể vận hành, quan sát và tune được bởi creator/maintainer mà không phải chạm DB trực tiếp.
+
+**Features**
+
+- World pace control:
+  - Slow
+  - Normal
+  - Fast
+- Fast-forward mode:
+  - +50 năm
+  - +100 năm
+  - +1 era
+- Event Log Viewer theo:
+  - world
+  - agent
+  - event type
+  - canonical/raw state
+- Config Inspector:
+  - boundaries
+  - active provider/profile
+  - world preset/settings
+  - simulation caps
+- Per-world runtime status panel.
+
+**Deliverables**
+
+- Creator tăng/giảm tốc world hoặc fast-forward ngay trên UI/dev controls.
+- Maintainer xem được event log và config thật cho từng world.
+- Gate H có một multi-world product slice usable, không chỉ foundation.
+
+**Exit Criteria**
+
+- Pace control và fast-forward tạo ra state transition đúng contract.
+- Event Log Viewer và Config Inspector đọc dữ liệu thật, không phải mock.
+- Team có thể debug/tune một world cụ thể mà không phá world khác.
+
+---
+
+## Phase 8 – Alternate Timelines & Creator Control
+
+### Sprint 15 – Advanced God Mode & Story Arc Highlighter
+
+**Goal**
+
+Nâng God Mode từ preset đơn giản thành công cụ can thiệp có guardrails, đồng thời giúp creator nhìn ra các story arcs đáng khai thác.
+
+**Features**
+
+- Advanced God Mode:
+  - intensity
+  - scope
+  - target world/region/civilization
+  - safety/guardrail rules
+- Richer intervention types ngoài preset V1.
+- Story Arc Highlighter:
+  - rise/fall arcs
+  - war arcs
+  - prophecy/myth arcs
+  - anomaly arcs
+- Arc summary cards để link sang timeline/mythology/export.
+
+**Deliverables**
+
+- Creator trigger được interventions có kiểm soát hơn.
+- Hệ thống gợi ý được các arc đáng làm content từ world history.
+
+**Exit Criteria**
+
+- Advanced God Mode không phá coherence ngoài guardrails đã chốt.
+- Arc highlighter tạo ra output đủ readable để dùng cho export hoặc curation.
+- Interventions và arcs đều truy vết được trong timeline/log.
+
+### Sprint 16 – World Forking, Alternate Timeline Compare & Snapshot Sharing
+
+**Goal**
+
+Mở alternate timeline như một product capability thật sự, không chỉ metadata foundation.
+
+**Features**
+
+- World forking tại:
+  - một năm cụ thể
+  - một era boundary
+  - một event checkpoint
+- Alternate timeline compare:
+  - divergence summary
+  - changed civilizations/regions/events
+  - canonical delta
+- Snapshot sharing:
+  - share 1 era
+  - share 1 branch
+  - share 1 story slice
+- Branch provenance và audit metadata.
+
+**Deliverables**
+
+- User fork được world và quan sát một timeline nhánh mới.
+- Có UI/projection để so sánh mainline với branch.
+- Snapshot sharing usable cho creator workflow.
+
+**Exit Criteria**
+
+- Ít nhất một flow fork tại năm X → chạy tiếp → compare với mainline hoạt động end-to-end.
+- Snapshot/branch artifacts giữ provenance rõ ràng.
+- Alternate timeline path không làm rối current-world path.
+
+---
+
+## Phase 9 – Runtime Flexibility & Creator Publishing
+
+### Sprint 17 – Per-agent Model Profiles, Local LLM & Multi-provider Settings
+
+**Goal**
+
+Hoàn thiện runtime flexibility để project không còn bị trói vào một provider/profile duy nhất khi world complexity tăng lên.
+
+**Features**
+
+- Per-agent model profiles:
+  - creative agents
+  - Myth/Culture groups
+  - Guardian/Historian groups
+- Settings/inspection cho multi-provider:
+  - OpenAI
+  - Perplexity
+  - local LLM
+- Local LLM profile path có health contract rõ.
+- Provider fallback/routing rules ở mức thực dụng.
+- Compatibility matrix và smoke tests cho provider profiles.
+
+**Deliverables**
+
+- User nâng cao hoặc maintainer chọn được profile phù hợp theo loại world/workload.
+- Local LLM path trở thành lựa chọn khả dụng, không còn là placeholder.
+
+**Exit Criteria**
+
+- App chạy ổn với ít nhất 2 cloud providers và 1 local profile path.
+- Có thể chọn profile global hoặc theo nhóm agent mà không phá simple default path.
+- Cost/latency tradeoff theo profile nhìn thấy được trong tooling.
+
+### Sprint 18 – Myths Export, Highlight Packs & Creator Publishing Pipeline
+
+**Goal**
+
+Biến world outputs thành creator-ready artifact packs thay vì chỉ là raw docs/export rời rạc.
+
+**Features**
+
+- Myths & Legends export hoàn chỉnh.
+- Story arc export packs.
+- Highlight reel manifest cho video/blog workflows.
+- Snapshot/export bundle chuẩn hóa:
+  - wiki
+  - annals
+  - myths
+  - arcs
+  - highlights
+- Optional remote artifact storage path cho publishing workflow nâng cao.
+
+**Deliverables**
+
+- Creator xuất được một bộ artifact hoàn chỉnh từ một world hoặc một branch.
+- Story arcs, myths và highlights link với nhau thành publishing pipeline rõ.
+
+**Exit Criteria**
+
+- Export pack usable mà không cần chắp vá thủ công nhiều nguồn.
+- Myth/highlight exports readable và truy vết được về source events.
+- Gate J thể hiện rõ creator pipeline và runtime flexibility đều usable.
+
+---
+
+## Phase 10 – Community & Collaboration
+
+### Sprint 19 – Community Worlds, Package Export/Import & Shared Gallery
+
+**Goal**
+
+Biến world thành asset có thể chia sẻ, import và khám phá như một ecosystem.
+
+**Features**
+
+- World package format:
+  - seed
+  - history
+  - metadata
+  - compatibility version
+- Export/import world packages.
+- Community Worlds gallery:
+  - browse
+  - filter
+  - provenance
+  - author/source metadata
+- Basic moderation/provenance flags cho shared artifacts.
+
+**Deliverables**
+
+- User export một world để người khác import và chạy tiếp.
+- Gallery hiển thị được các shared worlds với metadata đủ tin cậy.
+
+**Exit Criteria**
+
+- Import world package từ máy/nguồn khác thành công và world chạy lại được.
+- Package format có versioning/path rõ để tránh drift.
+- Shared gallery không yêu cầu collaborative realtime để có giá trị sử dụng.
+
+### Sprint 20 – Collaborative Viewing, Shared Sessions & Social Safety Rails
+
+**Goal**
+
+Đóng vòng full vision đã mô tả trong vision docs bằng trải nghiệm nhiều người cùng quan sát và can thiệp có kiểm soát vào một world.
+
+**Features**
+
+- Collaborative viewing sessions.
+- Shared Dream Feed / Timeline cho nhiều viewers.
+- Permission model cho God Mode trong session:
+  - viewer
+  - operator
+  - moderator
+- Session audit trail:
+  - ai trigger gì
+  - lúc nào
+  - ảnh hưởng gì
+- Conflict handling cho concurrent interventions.
+
+**Deliverables**
+
+- 2+ user có thể cùng xem một world/session.
+- Shared interventions được audit và giữ coherence.
+- Gate K chạm được baseline “full vision” đã mô tả trong `ai-dreams-vision.md`.
+
+**Exit Criteria**
+
+- Shared session giữ timeline/feed nhất quán cho nhiều user.
+- Permission model ngăn shared God Mode trở thành chaos ngẫu nhiên.
+- Community/collab layer usable mà không buộc project thành MMO backend phức tạp.
+
+---
+
 ## 5. Phase Gates
 
 | Gate | Cuối sprint | Điều kiện để qua gate |
@@ -463,6 +757,10 @@ Mở nền cho roadmap Phase 5 mà chưa đòi full community feature.
 | Gate E – Expanded Simulation Ready | Sprint 8 | 10-agent catalog được mở dần với era summaries |
 | Gate F – Visualization Ready | Sprint 10 | Map + Civilization Viewer + Mythology/Graph usable |
 | Gate G – Platform Expansion Ready | Sprint 12 | Optional advanced infra + advanced observability + multi-world foundation |
+| Gate H – Multi-world Product Ready | Sprint 14 | Multi-world manager + presets + pace control + inspector tooling usable |
+| Gate I – Alternate Timeline Ready | Sprint 16 | Advanced God Mode + story arcs + world forking + snapshot sharing usable |
+| Gate J – Creator Runtime Ready | Sprint 18 | Per-agent model profiles + local/cloud provider paths + creator export suite usable |
+| Gate K – Community Vision Ready | Sprint 20 | Shared world packages + gallery + collaborative viewing usable |
 
 ---
 
@@ -475,7 +773,7 @@ Mở nền cho roadmap Phase 5 mà chưa đòi full community feature.
   - 1–2 deliverable có thể demo
 - Bất kỳ thay đổi scope nào làm trượt gate phải được cập nhật đồng thời ở:
   - `MVP-SPEC.md` nếu scope V1 đổi
-  - `roadmap.md` nếu roadmap horizon đổi
+  - `ai-dreams-vision.md` nếu vision horizon đổi
   - `PROJECT-MASTER-PLAN.md` để cập nhật milestone và risk
 
 ---

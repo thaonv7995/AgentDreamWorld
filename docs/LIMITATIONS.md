@@ -683,7 +683,7 @@ ai-dreams-server --mode replay --from-tick 0 --to-tick 100 --source data/snapsho
 
 **Vấn đề**
 
-12 sprints × 2 tuần = 24 tuần = 6 tháng. MVP gate ở Sprint 6 = 3 tháng. Repo hiện tại chưa có dòng code nào.
+Execution horizon hiện tại đã mở tới 20 sprints. MVP gate vẫn ở Sprint 6 (= khoảng 3 tháng), Platform Expansion gate ở Sprint 12 (= khoảng 6 tháng), và Community Vision gate ở Sprint 20 (= khoảng 10 tháng) nếu giữ cadence 2 tuần/sprint. Repo hiện tại chưa có dòng code nào.
 
 Nếu solo hoặc 2 người, Sprint 0–2 dễ bị kéo dài vì:
 - Rust learning curve (nếu chưa quen).

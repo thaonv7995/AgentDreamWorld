@@ -144,3 +144,75 @@ Mục đích:
 | ADW-S12-BE-01 | Implement multi-world metadata model và snapshot/fork foundation | Backend | Backend Lead | XL | Not Started | ADW-S11-BE-01 | Kèm backward compatibility path |
 | ADW-S12-FE-01 | Tạo world selector/world list shell | Frontend | Frontend Lead | M | Not Started | ADW-S12-BE-01 | Chuẩn bị future alternate timeline UX |
 | ADW-S12-DO-01 | Tạo ops runbook và workflows backup/restore multi-world | DevOps | DevOps Lead | M | Not Started | ADW-S12-BE-01 | Monitoring for world growth |
+
+## Sprint 13 – Multi-world Manager, Presets & World Lifecycle UX
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S13-BA-01 | Chốt UX và lifecycle rules cho multi-world manager | BA | BA Lead | S | Not Started | ADW-S12-BA-01 | Bao gồm presets và archive states |
+| ADW-S13-BE-01 | Implement world manager APIs, presets và state isolation | Backend | Backend Lead | XL | Not Started | ADW-S12-BE-01 | Create/select/archive, preset metadata |
+| ADW-S13-FE-01 | Implement multi-world manager UI và world creation flow | Frontend | Frontend Lead | L | Not Started | ADW-S13-BE-01 | Current-world path vẫn phải rõ |
+| ADW-S13-DO-01 | Thiết lập ops checks cho nhiều world active/archive | DevOps | DevOps Lead | M | Not Started | ADW-S13-BE-01 | Storage growth, backup naming |
+
+## Sprint 14 – Pace Control, Event Log Viewer & Config Inspector
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S14-BA-01 | Chốt control semantics cho pace/fast-forward và inspector UX | BA | BA Lead | S | Not Started | ADW-S13-BA-01 | Slow/Normal/Fast, +50/+100/+1 era |
+| ADW-S14-BE-01 | Implement pace control, fast-forward, log/config projections | Backend | Backend Lead | XL | Not Started | ADW-S13-BE-01 | Per-world runtime state, inspector payloads |
+| ADW-S14-FE-01 | Implement pace controls, Event Log Viewer, Config Inspector | Frontend | Frontend Lead | XL | Not Started | ADW-S14-BE-01 | Kèm filters và debug views |
+| ADW-S14-DO-01 | Tạo verification flow cho fast-forward, pacing và inspection metrics | DevOps | DevOps Lead | M | Not Started | ADW-S14-BE-01 | Soak runs theo nhiều pace |
+
+## Sprint 15 – Advanced God Mode & Story Arc Highlighter
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S15-BA-01 | Chốt guardrails cho Advanced God Mode và taxonomy story arcs | BA | BA Lead | S | Not Started | ADW-S14-BA-01 | Scope/intensity rules, arc categories |
+| ADW-S15-BE-01 | Implement advanced interventions và story arc extraction | Backend | Backend Lead | XL | Not Started | ADW-S14-BE-01 | Guardrails, arc scoring, traceability |
+| ADW-S15-FE-01 | Implement Advanced God Mode UI và story arc surfaces | Frontend | Frontend Lead | L | Not Started | ADW-S15-BE-01 | Kèm previews, arc cards, cross-links |
+| ADW-S15-DO-01 | Chạy coherence/cost review cho advanced intervention paths | DevOps | DevOps Lead | M | Not Started | ADW-S15-BE-01 | Detect intervention instability |
+
+## Sprint 16 – World Forking, Alternate Timeline Compare & Snapshot Sharing
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S16-BA-01 | Chốt UX fork/compare và provenance rules cho snapshots | BA | BA Lead | S | Not Started | ADW-S15-BA-01 | Chốt branch naming, compare semantics |
+| ADW-S16-BE-01 | Implement world forking, branch compare và snapshot sharing | Backend | Backend Lead | XL | Not Started | ADW-S15-BE-01 | Fork at year/era/event checkpoint |
+| ADW-S16-FE-01 | Implement alternate timeline UX và snapshot share flow | Frontend | Frontend Lead | XL | Not Started | ADW-S16-BE-01 | Diff summaries, branch navigation |
+| ADW-S16-DO-01 | Tạo storage/recovery policy cho forks và snapshots | DevOps | DevOps Lead | M | Not Started | ADW-S16-BE-01 | Retention, restore, provenance checks |
+
+## Sprint 17 – Per-agent Model Profiles, Local LLM & Multi-provider Settings
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S17-BA-01 | Chốt profile matrix và user-facing settings model cho providers | BA | BA Lead | S | Not Started | ADW-S16-BA-01 | Global vs per-agent-group |
+| ADW-S17-BE-01 | Implement per-agent profiles, local LLM path và provider routing | Backend | Backend Lead | XL | Not Started | ADW-S16-BE-01 | OpenAI/Perplexity/local compatibility |
+| ADW-S17-FE-01 | Implement provider settings UI và runtime profile inspection | Frontend | Frontend Lead | L | Not Started | ADW-S17-BE-01 | Kèm default-safe path |
+| ADW-S17-DO-01 | Thiết lập provider smoke matrix và local profile ops notes | DevOps | DevOps Lead | M | Not Started | ADW-S17-BE-01 | Health checks, fallback tests |
+
+## Sprint 18 – Myths Export, Highlight Packs & Creator Publishing Pipeline
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S18-BA-01 | Chốt creator pack format cho myths/arcs/highlights | BA | BA Lead | S | Not Started | ADW-S17-BA-01 | Bao gồm output acceptance và naming |
+| ADW-S18-BE-01 | Implement myths export, highlight manifests và publishing bundles | Backend | Backend Lead | XL | Not Started | ADW-S17-BE-01 | Optional remote artifact path |
+| ADW-S18-FE-01 | Implement creator export UI và artifact browsing flow | Frontend | Frontend Lead | L | Not Started | ADW-S18-BE-01 | Packs, previews, download states |
+| ADW-S18-DO-01 | Thiết lập artifact retention và publish/storage workflow | DevOps | DevOps Lead | M | Not Started | ADW-S18-BE-01 | Remote storage optional path |
+
+## Sprint 19 – Community Worlds, Package Export/Import & Shared Gallery
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S19-BA-01 | Chốt world package spec, provenance fields và gallery UX | BA | BA Lead | S | Not Started | ADW-S18-BA-01 | Bao gồm moderation metadata |
+| ADW-S19-BE-01 | Implement package export/import, versioning và shared gallery APIs | Backend | Backend Lead | XL | Not Started | ADW-S18-BE-01 | Seed + history + metadata |
+| ADW-S19-FE-01 | Implement community gallery và import/export flows | Frontend | Frontend Lead | XL | Not Started | ADW-S19-BE-01 | Browse/filter/provenance surfaces |
+| ADW-S19-DO-01 | Tạo moderation/runbook và package compatibility checks | DevOps | DevOps Lead | M | Not Started | ADW-S19-BE-01 | Trust, review, schema compatibility |
+
+## Sprint 20 – Collaborative Viewing, Shared Sessions & Social Safety Rails
+
+| ID | Title | Role | Suggested Owner | Estimate | Status | Dependency | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ADW-S20-BA-01 | Chốt session roles, permissions và safety rails cho collab mode | BA | BA Lead | S | Not Started | ADW-S19-BA-01 | Viewer/operator/moderator model |
+| ADW-S20-BE-01 | Implement shared session runtime, audit trail và intervention conflict handling | Backend | Backend Lead | XL | Not Started | ADW-S19-BE-01 | Collaborative viewing không biến thành MMO backend |
+| ADW-S20-FE-01 | Implement collaborative viewing UI, presence và shared control states | Frontend | Frontend Lead | XL | Not Started | ADW-S20-BE-01 | Feed/timeline/session state sync |
+| ADW-S20-DO-01 | Thiết lập ops, rate-limit và abuse/runbook cho collaborative sessions | DevOps | DevOps Lead | M | Not Started | ADW-S20-BE-01 | Session safety và rollback path |
